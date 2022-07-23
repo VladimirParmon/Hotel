@@ -43,6 +43,9 @@
     ]
   },
   "devDependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/material": "^5.9.1",
     "react-router": "^6.3.0",
     "sass": "^1.54.0"
   }
