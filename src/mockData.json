@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1234",
+    "number": 13,
+    "price": 123000,
+    "reviews": [],
+    "rate": 4.5,
+    "bookings": [],
+    "type": "standard",
+    "guestsAllowed": true,
+    "petsAllowed": false,
+    "smokingAllowed": false,
+    "suitableForDisabled": false,
+    "hasWideCorridor": true,
+    "noiseInsulation": true,
+    "hasBigWindows": true,
+    "hasBalcony": false,
+    "hasFireplace": false,
+    "floor": 2,
+    "bedsAmount": 1
+  }
+]
