@@ -3,7 +3,7 @@ export interface IApartment {
   number: number;
   price: number;
   reviews: string[];
-  rate: number;
+  rating: number;
   bookings: string[];
   type: "standard" | "premium" | "luxurious";
   guestsAllowed: boolean;
@@ -16,9 +16,42 @@ export interface IApartment {
   hasBalcony: boolean;
   hasFireplace: boolean;
   floor: number;
-  bedsAmount: number;
+  bedsAmount: 1 | 2;
+}
+
+interface FiltersRange {
+  from: number;
+  to: number;
+}
+
+export interface Guests {
+  adults: number;
+  children: number;
+  infants: number;
+}
+
+export interface IFilters {
+  price: FiltersRange;
+  date: FiltersRange;
+  guests: Guests;
+  hasReviews: boolean;
+  rating: number;
+  type: "standard" | "premium" | "luxurious";
+  guestsAllowed: boolean;
+  petsAllowed: boolean;
+  smokingAllowed: boolean;
+  suitableForDisabled: boolean;
+  hasWideCorridor: boolean;
+  noiseInsulation: boolean;
+  hasBigWindows: boolean;
+  hasBalcony: boolean;
+  hasFireplace: boolean;
+  floor: number;
+  bedsAmount: 1 | 2;
 }
 
 export interface apartmentsState {
   entities: IApartment[];
 }
+
+export type PaletteMode = "light" | "dark";

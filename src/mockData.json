@@ -4,7 +4,7 @@
     "number": 13,
     "price": 123000,
     "reviews": [],
-    "rate": 4.5,
+    "rating": 4.5,
     "bookings": [],
     "type": "standard",
     "guestsAllowed": true,
