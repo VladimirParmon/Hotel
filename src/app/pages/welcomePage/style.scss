@@ -1,0 +1,39 @@
+.welcome-page {
+  flex: 1 1 auto;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    max-width: 350px;
+    max-height: 530px;
+    // transform: translateX(-100%);
+    padding: 15px;
+  }
+
+  &__greeting {
+    display: block;
+    position: relative;
+    font-size: 30px;
+  }
+
+  &__date-pickers {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+}
