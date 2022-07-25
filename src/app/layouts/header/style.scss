@@ -1,0 +1,64 @@
+#appHeader {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px 10px 15px;
+  position: relative;
+  flex: 0 1 auto;
+
+  &__logo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    span {
+      font-family: "Great Vibes", cursive;
+      font-size: 2.3rem;
+      white-space: nowrap;
+    }
+  }
+}
+
+#navigationMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.navigationOption {
+  text-decoration: none;
+  font-family: "Cormorant SC", serif;
+  font-weight: 500;
+
+  &:link {
+    color: #000;
+  }
+
+  &:visited {
+    color: #000;
+  }
+
+  &:hover {
+    color: red;
+  }
+}
+
+.profileFacia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  &__greeting {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
