@@ -23,9 +23,10 @@ function useImageLoader(imageSrc: string) {
 
 interface WelcomePageProps {
   filters: IFilters;
+  setFilters: React.Dispatch<React.SetStateAction<IFilters>>;
 }
 
-export function WelcomePage({ filters }: WelcomePageProps) {
+export function WelcomePage({ filters, setFilters }: WelcomePageProps) {
   const theme = useTheme() as Theme;
   const mode: PaletteMode = theme.palette.mode;
   const backgroundSrc = mode === "light" ? "room-cream.jpg" : "room-coffee.jpg";
@@ -41,7 +42,7 @@ export function WelcomePage({ filters }: WelcomePageProps) {
           <DatePickerComponent label="Arrival date" initialDate={filters.date.from} />
           <DatePickerComponent label="Departure date" initialDate={filters.date.to} />
         </div>
-        <GuestsCounter guests={filters.guests} />
+        <GuestsCounter filters={filters} setFilters={setFilters} />
         <div className="welcome-page__buttons">
           <Button variant="outlined" color="secondary">
             Clear

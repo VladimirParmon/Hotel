@@ -28,7 +28,10 @@ function App() {
           <BrowserRouter>
             <Header />
             <Routes>
-              <Route path="/" element={<WelcomePage filters={currentFilters} />} />
+              <Route
+                path="/"
+                element={<WelcomePage filters={currentFilters} setFilters={setCurrentFilters} />}
+              />
             </Routes>
           </BrowserRouter>
         </ThemeProvider>

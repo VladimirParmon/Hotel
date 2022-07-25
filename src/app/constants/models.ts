@@ -1,3 +1,5 @@
+import { GuestsTypes } from "./enums";
+
 export interface IApartment {
   id: string;
   number: number;
@@ -24,11 +26,9 @@ interface FiltersRange {
   to: number;
 }
 
-export interface Guests {
-  adults: number;
-  children: number;
-  infants: number;
-}
+export type Guests = {
+  [key in GuestsTypes]: number;
+};
 
 export interface IFilters {
   price: FiltersRange;

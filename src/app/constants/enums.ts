@@ -15,3 +15,9 @@ export enum NavigationLinks {
   UPDATES = "/updates",
   TERMS = "/terms-of-service",
 }
+
+export enum GuestsTypes {
+  ADULTS = "adults",
+  CHILDREN = "children",
+  INFANTS = "infants",
+}
