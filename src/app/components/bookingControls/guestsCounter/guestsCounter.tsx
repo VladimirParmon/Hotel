@@ -14,28 +14,30 @@ export function GuestsCounter({ filters }: GuestsCounterProps) {
   function handleChange(guestType: GuestsTypes, newValue: number) {
     dispatch(updateFiltersGuests({ guestType, newValue }));
   }
+  const { adults, children, infants } = filters.guests;
+  const totalGuests = adults + children + infants;
 
   return (
     <div className="guestsCounter">
-      <Typography className="guestsCounter__total">1 guest</Typography>
+      <Typography className="guestsCounter__total">Total: {totalGuests} guest(s)</Typography>
       <Divider />
       <Counter
         name={GuestsTypes.ADULTS}
         label="Adults"
         min={1}
-        value={filters.guests.adults}
+        value={adults}
         handleChange={handleChange}
       />
       <Counter
         name={GuestsTypes.CHILDREN}
         label="Children"
-        value={filters.guests.children}
+        value={children}
         handleChange={handleChange}
       />
       <Counter
         name={GuestsTypes.INFANTS}
         label="Infants"
-        value={filters.guests.infants}
+        value={infants}
         handleChange={handleChange}
       />
     </div>
