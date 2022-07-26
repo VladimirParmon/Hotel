@@ -107,6 +107,7 @@ export const filtersSlice = createSlice({
 export const {
   updateAllFilters,
   setDefaultFilters,
+  updateFiltersPrice,
   updateFiltersGuests,
   updateFiltersDate,
   updateFiltersReviews,
