@@ -3,25 +3,10 @@ import { Button, Paper } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 import DatePickerComponent from "app/components/bookingControls/datePicker";
 import GuestsCounter from "app/components/bookingControls/guestsCounter";
-import { useImageLoader } from "app/hooks/useImageLoader";
+import { useImageLoader } from "app/assets/useImageLoader";
 import { selectFiltersInfo, setDefaultFilters } from "app/redux/filtersSlice";
 import { useAppDispatch, useAppSelector } from "app/redux/hooks";
 import { PaletteMode } from "../../constants/models";
-
-// function useImageLoader(imageSrc: string) {
-//   const [backgroundImage, setBackgroundImage] = useState<any>(null);
-//   const path = "app/pages/welcomePage/assets/";
-
-//   useEffect(() => {
-//     console.log("loader on");
-//     import(`${path}${imageSrc}`).then((image) => {
-//       setBackgroundImage(image.default);
-//       console.log("loader off");
-//     });
-//   }, [imageSrc]);
-
-//   return backgroundImage;
-// }
 
 export function WelcomePage() {
   const theme = useTheme() as Theme;
