@@ -1,0 +1,12 @@
+.booking-controls {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &__date-pickers {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}
