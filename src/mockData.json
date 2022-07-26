@@ -17,6 +17,9 @@
     "hasBalcony": false,
     "hasFireplace": false,
     "floor": 2,
-    "bedsAmount": 1
+    "bedsAmount": 1,
+    "hasWiFi": true,
+    "hasAirConditioning": true,
+    "hasWorkspace": true
   }
 ]

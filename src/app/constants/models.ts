@@ -1,4 +1,10 @@
-import { GuestsTypes } from "./enums";
+import {
+  ChoicesSections,
+  Choices_Accessability,
+  Choices_Conveniences,
+  Choices_Terms,
+  GuestsTypes,
+} from "./enums";
 
 export interface IApartment {
   id: string;
@@ -19,6 +25,9 @@ export interface IApartment {
   hasFireplace: boolean;
   floor: number;
   bedsAmount: 1 | 2;
+  hasWiFi: boolean;
+  hasAirConditioning: boolean;
+  hasWorkspace: boolean;
 }
 
 export interface FiltersRange {
@@ -50,6 +59,9 @@ export interface IFilters {
   hasFireplace: boolean;
   floor: number;
   bedsAmount: 1 | 2;
+  hasWiFi: boolean;
+  hasAirConditioning: boolean;
+  hasWorkspace: boolean;
 }
 
 export interface apartmentsState {
@@ -57,3 +69,11 @@ export interface apartmentsState {
 }
 
 export type PaletteMode = "light" | "dark";
+
+export interface ChoicesDescription {
+  sectionName: ChoicesSections;
+  choices: {
+    name: Choices_Conveniences | Choices_Terms | Choices_Accessability;
+    description?: string;
+  }[];
+}
