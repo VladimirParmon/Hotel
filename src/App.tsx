@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Header from "./app/layouts/header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import WelcomePage from "./app/pages/welcomePage";
-import { IFilters, PaletteMode } from "./app/constants/models";
+import { PaletteMode } from "./app/constants/models";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { getDesignTokens } from "./app/material/theme";
+import { NavigationLinks } from "app/constants/enums";
+import ApartmentsPage from "app/pages/apartmentsPage";
 
 const ColorModeToggleContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -27,6 +29,7 @@ function App() {
             <Header />
             <Routes>
               <Route path="/" element={<WelcomePage />} />
+              <Route path={NavigationLinks.APARTMENTS} element={<ApartmentsPage />} />
             </Routes>
           </BrowserRouter>
         </ThemeProvider>

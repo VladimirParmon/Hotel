@@ -7,8 +7,17 @@ import { useImageLoader } from "app/assets/useImageLoader";
 import { selectFiltersInfo, setDefaultFilters } from "app/redux/filtersSlice";
 import { useAppDispatch, useAppSelector } from "app/redux/hooks";
 import { PaletteMode } from "../../constants/models";
+import { useNavigate } from "react-router";
+import { useCallback } from "react";
+import { NavigationLinks } from "app/constants/enums";
 
 export function WelcomePage() {
+  const navigate = useNavigate();
+  const navigateToApartments = useCallback(
+    () => navigate(NavigationLinks.APARTMENTS, { replace: true }),
+    [navigate]
+  );
+
   const theme = useTheme() as Theme;
   const mode: PaletteMode = theme.palette.mode;
   const backgroundSrc = mode === "light" ? "room-cream.jpg" : "room-coffee.jpg";
@@ -36,7 +45,7 @@ export function WelcomePage() {
           <Button variant="outlined" color="secondary" onClick={clearFilters}>
             Clear
           </Button>
-          <Button variant="contained" color="secondary">
+          <Button variant="contained" color="secondary" onClick={navigateToApartments}>
             Find an apartment
           </Button>
         </div>
