@@ -1,0 +1,24 @@
+.price-range {
+  display: flex;
+  flex-direction: column;
+
+  &__inputs {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-bottom: 7px;
+
+    .MuiInputAdornment-root {
+      p {
+        transform: translateY(1px);
+      }
+    }
+  }
+
+  &__slider {
+    width: 92% !important;
+    align-self: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+}
