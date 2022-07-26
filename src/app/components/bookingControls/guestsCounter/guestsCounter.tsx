@@ -1,18 +1,18 @@
 import { Divider, Typography } from "@mui/material";
 import { GuestsTypes } from "app/constants/enums";
 import { IFilters } from "app/constants/models";
+import { updateFiltersGuests } from "app/redux/filtersSlice";
+import { useAppDispatch } from "app/redux/hooks";
 import { Counter } from "./counterComponent";
 
 interface GuestsCounterProps {
   filters: IFilters;
-  setFilters: React.Dispatch<React.SetStateAction<IFilters>>;
 }
 
-export function GuestsCounter({ filters, setFilters }: GuestsCounterProps) {
+export function GuestsCounter({ filters }: GuestsCounterProps) {
+  const dispatch = useAppDispatch();
   function handleChange(guestType: GuestsTypes, newValue: number) {
-    const newFilters = Object.assign({}, filters);
-    newFilters.guests[guestType] = newValue;
-    setFilters(newFilters);
+    dispatch(updateFiltersGuests({ guestType, newValue }));
   }
 
   return (

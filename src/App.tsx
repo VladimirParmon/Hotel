@@ -5,13 +5,11 @@ import WelcomePage from "./app/pages/welcomePage";
 import { IFilters, PaletteMode } from "./app/constants/models";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { getDesignTokens } from "./app/material/theme";
-import { defaultFilters } from "app/constants/constants";
 
 const ColorModeToggleContext = React.createContext({ toggleColorMode: () => {} });
 
 function App() {
   const [themeMode, setThemeMode] = useState<PaletteMode>("light");
-  const [currentFilters, setCurrentFilters] = useState<IFilters>(defaultFilters);
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
@@ -28,10 +26,7 @@ function App() {
           <BrowserRouter>
             <Header />
             <Routes>
-              <Route
-                path="/"
-                element={<WelcomePage filters={currentFilters} setFilters={setCurrentFilters} />}
-              />
+              <Route path="/" element={<WelcomePage />} />
             </Routes>
           </BrowserRouter>
         </ThemeProvider>

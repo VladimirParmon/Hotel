@@ -12,7 +12,7 @@
     "smokingAllowed": false,
     "suitableForDisabled": false,
     "hasWideCorridor": true,
-    "noiseInsulation": true,
+    "hasNoiseInsulation": true,
     "hasBigWindows": true,
     "hasBalcony": false,
     "hasFireplace": false,

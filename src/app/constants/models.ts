@@ -7,13 +7,13 @@ export interface IApartment {
   reviews: string[];
   rating: number;
   bookings: string[];
-  type: "standard" | "premium" | "luxurious";
+  type: ApartmentTypes;
   guestsAllowed: boolean;
   petsAllowed: boolean;
   smokingAllowed: boolean;
   suitableForDisabled: boolean;
   hasWideCorridor: boolean;
-  noiseInsulation: boolean;
+  hasNoiseInsulation: boolean;
   hasBigWindows: boolean;
   hasBalcony: boolean;
   hasFireplace: boolean;
@@ -21,7 +21,7 @@ export interface IApartment {
   bedsAmount: 1 | 2;
 }
 
-interface FiltersRange {
+export interface FiltersRange {
   from: number;
   to: number;
 }
@@ -30,19 +30,21 @@ export type Guests = {
   [key in GuestsTypes]: number;
 };
 
+export type ApartmentTypes = "standard" | "premium" | "luxurious";
+
 export interface IFilters {
   price: FiltersRange;
   date: FiltersRange;
   guests: Guests;
   hasReviews: boolean;
   rating: number;
-  type: "standard" | "premium" | "luxurious";
+  type: ApartmentTypes;
   guestsAllowed: boolean;
   petsAllowed: boolean;
   smokingAllowed: boolean;
   suitableForDisabled: boolean;
   hasWideCorridor: boolean;
-  noiseInsulation: boolean;
+  hasNoiseInsulation: boolean;
   hasBigWindows: boolean;
   hasBalcony: boolean;
   hasFireplace: boolean;
