@@ -20,7 +20,7 @@ export function GuestsCounter({ filters }: GuestsCounterProps) {
   return (
     <div className="guestsCounter">
       <Typography className="guestsCounter__total">Total: {totalGuests} guest(s)</Typography>
-      <Divider />
+      <Divider sx={{ marginBottom: "20px" }} />
       <Counter
         name={GuestsTypes.ADULTS}
         label="Adults"
