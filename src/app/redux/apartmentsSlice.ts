@@ -1,7 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { apartmentsState } from "../constants/models";
 import { RootState, AppThunk } from "./store";
 import * as APIService from "../../app/services/APIService";
+import { SortingOrder } from "app/constants/enums";
 
 const initialState: apartmentsState = {
   entities: [],
@@ -23,17 +24,46 @@ export const apartmentsSlice = createSlice({
       });
       state.entities = newState;
     },
+    sortUsingPopularity: (state, action: PayloadAction<SortingOrder.ASC | SortingOrder.DESC>) => {
+      state.entities.sort((a, b) => {
+        return action.payload === SortingOrder.ASC
+          ? a.reviews.length - b.reviews.length
+          : b.reviews.length - a.reviews.length;
+      });
+    },
+    sortUsingNumber: (state, action: PayloadAction<SortingOrder.ASC | SortingOrder.DESC>) => {
+      state.entities.sort((a, b) => {
+        return action.payload === SortingOrder.ASC ? a.number - b.number : b.number - a.number;
+      });
+    },
+    sortUsingPrice: (state, action: PayloadAction<SortingOrder.ASC | SortingOrder.DESC>) => {
+      state.entities.sort((a, b) => {
+        return action.payload === SortingOrder.ASC ? a.price - b.price : b.price - a.price;
+      });
+    },
+    sortUsingRating: (state, action: PayloadAction<SortingOrder.ASC | SortingOrder.DESC>) => {
+      state.entities.sort((a, b) => {
+        return action.payload === SortingOrder.ASC ? a.rating - b.rating : b.rating - a.rating;
+      });
+    },
   },
 });
 
-export const { saveFetchedApartmentsInfoToStore, updateSingleApartmentInfoInStore } =
-  apartmentsSlice.actions;
+export const {
+  saveFetchedApartmentsInfoToStore,
+  updateSingleApartmentInfoInStore,
+  sortUsingPopularity,
+  sortUsingNumber,
+  sortUsingPrice,
+  sortUsingRating,
+} = apartmentsSlice.actions;
 
 export const selectApartmentsInfo = (state: RootState) => state.apartments;
 
 export const fetchApartmentsInfo = (): AppThunk => (dispatch, getState) => {
-  const data = APIService.getApartmentsDataFromServer();
-  dispatch(saveFetchedApartmentsInfoToStore(data));
+  APIService.getApartmentsDataFromServer().then((data) => {
+    dispatch(saveFetchedApartmentsInfoToStore(data));
+  });
 };
 
 export default apartmentsSlice.reducer;
