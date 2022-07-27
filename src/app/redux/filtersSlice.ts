@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { oneDayMs } from "app/constants/constants";
 import { GuestsTypes } from "app/constants/enums";
 import { ApartmentTypes, FiltersRange, IFilters } from "app/constants/models";
 import { RootState } from "./store";
+
+const oneDayMs = 86_000_000;
 
 const initialState = {
   price: {
@@ -19,8 +20,8 @@ const initialState = {
     infants: 0,
   },
   hasReviews: false,
-  rating: 0,
-  type: "standard",
+  rating: null,
+  type: null,
   guestsAllowed: false,
   petsAllowed: false,
   smokingAllowed: false,
@@ -30,8 +31,8 @@ const initialState = {
   hasBigWindows: false,
   hasBalcony: false,
   hasFireplace: false,
-  floor: 1,
-  bedsAmount: 1,
+  floor: null,
+  bedsAmount: null,
 } as IFilters;
 
 export const filtersSlice = createSlice({
@@ -41,7 +42,7 @@ export const filtersSlice = createSlice({
     updateAllFilters: (state, action: PayloadAction<IFilters>) => {
       return action.payload;
     },
-    updateFiltersPrice: (state, action) => {
+    updateFiltersPrice: (state, action: PayloadAction<FiltersRange>) => {
       state.price = action.payload;
     },
     updateFiltersGuests: (
@@ -98,6 +99,15 @@ export const filtersSlice = createSlice({
     updateFiltersBedsAmount: (state, action: PayloadAction<1 | 2>) => {
       state.bedsAmount = action.payload;
     },
+    updateFiltersHasAirConditioning: (state, action: PayloadAction<boolean>) => {
+      state.hasAirConditioning = action.payload;
+    },
+    updateFiltersHasWiFi: (state, action: PayloadAction<boolean>) => {
+      state.hasWiFi = action.payload;
+    },
+    updateFiltersHasWorkspace: (state, action: PayloadAction<boolean>) => {
+      state.hasWorkspace = action.payload;
+    },
     setDefaultFilters: () => {
       return initialState;
     },
@@ -124,6 +134,9 @@ export const {
   updateFiltersHasFireplace,
   updateFiltersFloor,
   updateFiltersBedsAmount,
+  updateFiltersHasAirConditioning,
+  updateFiltersHasWiFi,
+  updateFiltersHasWorkspace,
 } = filtersSlice.actions;
 
 export const selectFiltersInfo = (state: RootState) => state.filters;
