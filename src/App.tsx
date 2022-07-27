@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./app/layouts/header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import WelcomePage from "./app/pages/welcomePage";
@@ -7,10 +7,13 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import { getDesignTokens } from "./app/material/theme";
 import { NavigationLinks } from "app/constants/enums";
 import ApartmentsPage from "app/pages/apartmentsPage";
+import { useAppDispatch } from "app/redux/hooks";
+import { fetchApartmentsInfo } from "app/redux/apartmentsSlice";
 
 const ColorModeToggleContext = React.createContext({ toggleColorMode: () => {} });
 
 function App() {
+  const dispatch = useAppDispatch();
   const [themeMode, setThemeMode] = useState<PaletteMode>("light");
   const colorMode = React.useMemo(
     () => ({
@@ -21,6 +24,11 @@ function App() {
     []
   );
   const theme = React.useMemo(() => createTheme(getDesignTokens(themeMode)), [themeMode]);
+
+  useEffect(() => {
+    dispatch(fetchApartmentsInfo());
+  }, [dispatch]);
+
   return (
     <React.Fragment>
       <ColorModeToggleContext.Provider value={colorMode}>
