@@ -5,6 +5,8 @@ import {
   Choices_Terms,
   NavigationLinks,
   NavigationOptions,
+  SortingOptions,
+  SortingOrder,
 } from "./enums";
 import { ChoicesDescription } from "./models";
 
@@ -75,3 +77,24 @@ export const choices: ChoicesDescription[] = [
     ],
   },
 ];
+
+export const sortingOptions = [
+  SortingOptions.POPULARITY,
+  SortingOptions.NUMBER,
+  SortingOptions.PRICE,
+  SortingOptions.RATING,
+];
+
+export const sortingOrder: [SortingOrder.DESC, SortingOrder.ASC] = [
+  SortingOrder.DESC,
+  SortingOrder.ASC,
+];
+
+export const floors = [
+  "Any",
+  ...Array.from(Array.from({ length: 5 }, (_, i) => i + 1)).map((key) => key.toString()),
+];
+
+export const beds = ["Any", "1", "2"];
+
+export const apartmentType = ["Any", "Standard", "Premium", "Luxurious"];

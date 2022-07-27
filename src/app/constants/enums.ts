@@ -51,3 +51,17 @@ export enum Choices_Accessability {
   DISABLED = "Suitable for a disabled person",
   DISABLED_DESCRIPTION = "Apartment meets all the requirements to accommodate a disabled person",
 }
+
+export enum SortingOptions {
+  LABEL = "Sorting options",
+  NUMBER = "Apartment number",
+  POPULARITY = "Popularity",
+  RATING = "Rating",
+  PRICE = "Price",
+}
+
+export enum SortingOrder {
+  LABEL = "Sorting order",
+  ASC = "Ascending",
+  DESC = "Descending",
+}
