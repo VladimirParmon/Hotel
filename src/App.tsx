@@ -7,8 +7,9 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import { getDesignTokens } from "./app/material/theme";
 import { NavigationLinks } from "app/constants/enums";
 import ApartmentsPage from "app/pages/apartmentsPage";
-import { useAppDispatch } from "app/redux/hooks";
-import { fetchApartmentsInfo } from "app/redux/apartmentsSlice";
+import { useAppDispatch, useAppSelector } from "app/redux/hooks";
+import { fetchApartmentsInfo, selectApartmentsInfo } from "app/redux/apartmentsSlice";
+import Loader from "app/components/loader";
 
 const ColorModeToggleContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -29,17 +30,23 @@ function App() {
     dispatch(fetchApartmentsInfo());
   }, [dispatch]);
 
+  const isDataLoaded = useAppSelector(selectApartmentsInfo).entities.length;
+
   return (
     <React.Fragment>
       <ColorModeToggleContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
-          <BrowserRouter>
-            <Header />
-            <Routes>
-              <Route path="/" element={<WelcomePage />} />
-              <Route path={NavigationLinks.APARTMENTS} element={<ApartmentsPage />} />
-            </Routes>
-          </BrowserRouter>
+          {isDataLoaded ? (
+            <BrowserRouter>
+              <Header />
+              <Routes>
+                <Route path="/" element={<WelcomePage />} />
+                <Route path={NavigationLinks.APARTMENTS} element={<ApartmentsPage />} />
+              </Routes>
+            </BrowserRouter>
+          ) : (
+            <Loader />
+          )}
         </ThemeProvider>
       </ColorModeToggleContext.Provider>
     </React.Fragment>
