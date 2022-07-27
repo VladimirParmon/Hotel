@@ -35,11 +35,11 @@ export function PriceRange({ price }: PriceRangeProps) {
   }
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    let prices;
+    let prices: FiltersRange;
     prices =
       event.target.name === "min"
-        ? { ...price, from: event.target.value }
-        : { ...price, to: event.target.value };
+        ? { ...price, from: +event.target.value }
+        : { ...price, to: +event.target.value };
     dispatch(updateFiltersPrice(prices));
   }
 
