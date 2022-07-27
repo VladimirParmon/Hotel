@@ -1,3 +1,4 @@
+import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 import {
   ChoicesSections,
   Choices_Accessability,
@@ -45,9 +46,11 @@ export interface IFilters {
   price: FiltersRange;
   date: FiltersRange;
   guests: Guests;
+  rating: number | null;
+  type: ApartmentTypes | null;
+  floor: number | null;
+  bedsAmount: 1 | 2 | null;
   hasReviews: boolean;
-  rating: number;
-  type: ApartmentTypes;
   guestsAllowed: boolean;
   petsAllowed: boolean;
   smokingAllowed: boolean;
@@ -57,8 +60,6 @@ export interface IFilters {
   hasBigWindows: boolean;
   hasBalcony: boolean;
   hasFireplace: boolean;
-  floor: number;
-  bedsAmount: 1 | 2;
   hasWiFi: boolean;
   hasAirConditioning: boolean;
   hasWorkspace: boolean;
@@ -70,10 +71,13 @@ export interface apartmentsState {
 
 export type PaletteMode = "light" | "dark";
 
+type ChoicesDescriptionAction = ActionCreatorWithPayload<any>;
+
 export interface ChoicesDescription {
   sectionName: ChoicesSections;
   choices: {
     name: Choices_Conveniences | Choices_Terms | Choices_Accessability;
+    action: ChoicesDescriptionAction;
     description?: string;
   }[];
 }
