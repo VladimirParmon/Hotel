@@ -3,7 +3,14 @@ import { SortingOptions, SortingOrder } from "app/constants/enums";
 import SearchIcon from "@mui/icons-material/Search";
 import Selector from "../selector";
 import "./style.scss";
-import { apartmentType, beds, floors, sortingOptions, sortingOrder } from "app/constants/constants";
+import {
+  apartmentType,
+  beds,
+  floors,
+  ratings,
+  sortingOptions,
+  sortingOrder,
+} from "app/constants/constants";
 import { ChoiceComponent } from "../bookingControls/choicesList/choiceComponent";
 import { useCallback, useEffect, useState } from "react";
 import { useAppDispatch } from "app/redux/hooks";
@@ -71,6 +78,7 @@ export function DisplayControls() {
       <Selector label={"Floor"} options={floors} />
       <Selector label={"Beds amount"} options={beds} />
       <Selector label={"Apartment type"} options={apartmentType} />
+      <Selector label={"Visitors rating"} options={ratings} />
       <ChoiceComponent name="Has reviews" />
     </div>
   );
