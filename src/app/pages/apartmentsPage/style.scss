@@ -2,4 +2,12 @@
   flex: 1 1 auto;
   padding: 30px;
   overflow-x: hidden;
+  display: flex;
+  gap: 30px;
+}
+
+#display {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }

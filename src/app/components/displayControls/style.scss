@@ -1,0 +1,9 @@
+.display-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  &__searchbar {
+    width: 100%;
+  }
+}
