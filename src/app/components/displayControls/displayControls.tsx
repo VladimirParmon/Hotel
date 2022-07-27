@@ -21,6 +21,7 @@ import {
   sortUsingRating,
 } from "app/redux/apartmentsSlice";
 import { SelectorWithoutState } from "../selector/selectorWithoutState";
+import { updateFiltersHasReviews } from "app/redux/filtersSlice";
 
 export function DisplayControls() {
   const [sortingOptionsState, setSortingOptionsState] = useState(sortingOptions[0]);
@@ -79,7 +80,7 @@ export function DisplayControls() {
       <Selector label={"Beds amount"} options={beds} />
       <Selector label={"Apartment type"} options={apartmentType} />
       <Selector label={"Visitors rating"} options={ratings} />
-      <ChoiceComponent name="Has reviews" />
+      <ChoiceComponent name="Has reviews" action={updateFiltersHasReviews} />
     </div>
   );
 }

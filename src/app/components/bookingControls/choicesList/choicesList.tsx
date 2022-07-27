@@ -8,7 +8,12 @@ export function ChoicesList({ sectionName, choices }: ChoicesDescription) {
       <Typography sx={{ alignSelf: "center" }}>{sectionName}</Typography>
       <Divider />
       {choices.map((choice) => (
-        <ChoiceComponent name={choice.name} description={choice.description} key={choice.name} />
+        <ChoiceComponent
+          name={choice.name}
+          description={choice.description}
+          key={choice.name}
+          action={choice.action}
+        />
       ))}
     </div>
   );

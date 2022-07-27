@@ -71,7 +71,7 @@ export interface apartmentsState {
 
 export type PaletteMode = "light" | "dark";
 
-type ChoicesDescriptionAction = ActionCreatorWithPayload<any>;
+export type ChoicesDescriptionAction = ActionCreatorWithPayload<any>;
 
 export interface ChoicesDescription {
   sectionName: ChoicesSections;

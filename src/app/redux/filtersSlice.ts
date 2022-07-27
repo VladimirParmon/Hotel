@@ -108,6 +108,9 @@ export const filtersSlice = createSlice({
     updateFiltersHasWorkspace: (state, action: PayloadAction<boolean>) => {
       state.hasWorkspace = action.payload;
     },
+    updateFiltersHasReviews: (state, action: PayloadAction<boolean>) => {
+      state.hasReviews = action.payload;
+    },
     setDefaultFilters: () => {
       return initialState;
     },
@@ -137,6 +140,7 @@ export const {
   updateFiltersHasAirConditioning,
   updateFiltersHasWiFi,
   updateFiltersHasWorkspace,
+  updateFiltersHasReviews,
 } = filtersSlice.actions;
 
 export const selectFiltersInfo = (state: RootState) => state.filters;
