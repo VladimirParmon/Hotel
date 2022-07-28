@@ -3,6 +3,12 @@
   flex-wrap: wrap;
   gap: 15px;
 
+  &__searchbar-assembly {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+  }
+
   &__searchbar {
     width: 100%;
   }

@@ -7,6 +7,7 @@ import {
   apartmentType,
   beds,
   floors,
+  itemsPerPage,
   ratings,
   sortingOptions,
   sortingOrder,
@@ -25,6 +26,7 @@ import {
   updateFiltersBedsAmount,
   updateFiltersFloor,
   updateFiltersHasReviews,
+  updateFiltersItemsPerPage,
   updateFiltersRating,
   updateFiltersType,
 } from "app/redux/filtersSlice";
@@ -57,31 +59,38 @@ export function DisplayControls() {
 
   return (
     <div className="display-controls">
-      <TextField
-        name="searchbar"
-        color="secondary"
-        placeholder="Search through apartments..."
-        className="display-controls__searchbar"
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          ),
-        }}
-      />
-      <SelectorWithoutState
-        label={SortingOptions.LABEL}
-        options={sortingOptions}
-        value={sortingOptionsState}
-        setValue={setSortingOptionsState}
-      />
-      <SelectorWithoutState
-        label={SortingOrder.LABEL}
-        options={sortingOrder}
-        value={sortingOrderState}
-        setValue={setSortingOrderState}
-      />
+      <div className="display-controls__searchbar-assembly">
+        <TextField
+          name="searchbar"
+          color="secondary"
+          placeholder="Search through apartments..."
+          className="display-controls__searchbar"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <SelectorWithoutState
+          label={SortingOptions.LABEL}
+          options={sortingOptions}
+          value={sortingOptionsState}
+          setValue={setSortingOptionsState}
+        />
+        <SelectorWithoutState
+          label={SortingOrder.LABEL}
+          options={sortingOrder}
+          value={sortingOrderState}
+          setValue={setSortingOrderState}
+        />
+        <Selector
+          label={"Items per page"}
+          options={itemsPerPage}
+          action={updateFiltersItemsPerPage}
+        />
+      </div>
       <Selector label={"Floor"} options={floors} action={updateFiltersFloor} />
       <Selector label={"Beds amount"} options={beds} action={updateFiltersBedsAmount} />
       <Selector label={"Apartment type"} options={apartmentType} action={updateFiltersType} />
