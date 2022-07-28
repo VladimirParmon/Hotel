@@ -45,7 +45,7 @@ function App() {
               </Routes>
             </BrowserRouter>
           ) : (
-            <Loader />
+            <Loader isMain />
           )}
         </ThemeProvider>
       </ColorModeToggleContext.Provider>

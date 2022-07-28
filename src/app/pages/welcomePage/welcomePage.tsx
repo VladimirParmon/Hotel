@@ -10,6 +10,7 @@ import { PaletteMode } from "../../constants/models";
 import { useNavigate } from "react-router";
 import { useCallback } from "react";
 import { NavigationLinks } from "app/constants/enums";
+import Loader from "app/components/loader";
 
 export function WelcomePage() {
   const navigate = useNavigate();
@@ -52,6 +53,6 @@ export function WelcomePage() {
       </Paper>
     </div>
   ) : (
-    <p>her tebe</p>
+    <Loader />
   );
 }
