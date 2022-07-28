@@ -63,6 +63,7 @@ export interface IFilters {
   hasWiFi: boolean;
   hasAirConditioning: boolean;
   hasWorkspace: boolean;
+  itemsPerPage: number;
 }
 
 export interface apartmentsState {

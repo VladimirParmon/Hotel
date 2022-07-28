@@ -142,3 +142,10 @@ export const ratings = [
   { name: "At least four stars", value: "4" },
   { name: "Five stars only", value: "5" },
 ];
+
+export const itemsPerPage = [
+  { name: "8", value: "8" },
+  { name: "12", value: "12" },
+  { name: "16", value: "16" },
+  { name: "20", value: "20" },
+];

@@ -33,6 +33,7 @@ const initialState = {
   hasFireplace: false,
   floor: null,
   bedsAmount: null,
+  itemsPerPage: 8,
 } as IFilters;
 
 export const filtersSlice = createSlice({
@@ -111,6 +112,9 @@ export const filtersSlice = createSlice({
     updateFiltersHasReviews: (state, action: PayloadAction<boolean>) => {
       state.hasReviews = action.payload;
     },
+    updateFiltersItemsPerPage: (state, action: PayloadAction<number>) => {
+      state.itemsPerPage = action.payload;
+    },
     setDefaultFilters: () => {
       return initialState;
     },
@@ -141,6 +145,7 @@ export const {
   updateFiltersHasWiFi,
   updateFiltersHasWorkspace,
   updateFiltersHasReviews,
+  updateFiltersItemsPerPage,
 } = filtersSlice.actions;
 
 export const selectFiltersInfo = (state: RootState) => state.filters;
