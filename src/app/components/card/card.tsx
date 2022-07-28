@@ -18,7 +18,7 @@ export function Card({ apartment }: CardProps) {
       <SliderComponent items={pics} />
       <div className="card__inner">
         <div className="card__description">
-          <span>
+          <span style={{ letterSpacing: "1px" }}>
             Apartment <b>№{apartment.number}</b>
           </span>
           <Typography sx={{ display: "inline-block" }}>{apartment.floor} floor</Typography>

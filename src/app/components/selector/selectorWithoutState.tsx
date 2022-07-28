@@ -1,5 +1,4 @@
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { SortingOptions, SortingOrder } from "app/constants/enums";
 import "./style.scss";
 
 interface SelectorWithoutStateProps<T> {

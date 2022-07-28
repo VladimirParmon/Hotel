@@ -7,7 +7,7 @@ export function useFilteredState() {
   const apartmentsData = useAppSelector(selectApartmentsInfo).entities;
   const currentFilters = useAppSelector(selectFiltersInfo);
   const activeFilters = Object.entries(currentFilters).filter(
-    (pair) => pair[1] !== false && pair[1] !== null
+    ([, filterValue]) => filterValue !== false && filterValue !== null
   );
   const result = apartmentsData.filter((apartment) => assess(apartment));
 
