@@ -108,19 +108,37 @@ export const sortingOrder: [SortingOrder.DESC, SortingOrder.ASC] = [
 ];
 
 export const floors = [
-  "Any floor",
-  ...Array.from(Array.from({ length: 5 }, (_, i) => i + 1)).map((key) => key.toString()),
+  { name: "Any floor", value: "null" },
+  { name: "1", value: "1" },
+  { name: "2", value: "2" },
+  { name: "3", value: "3" },
+  { name: "4", value: "4" },
+  { name: "5", value: "5" },
 ];
 
-export const beds = ["Any amount", "1", "2"];
+// export const floors = [
+//   "Any floor",
+//   ...Array.from(Array.from({ length: 5 }, (_, i) => i + 1)).map((key) => key.toString()),
+// ];
 
-export const apartmentType = ["Any type", "Standard", "Premium", "Luxurious"];
+export const beds = [
+  { name: "Any amount", value: "null" },
+  { name: "1", value: "1" },
+  { name: "2", value: "2" },
+];
+
+export const apartmentType = [
+  { name: "Any type", value: "null" },
+  { name: "Standard", value: '"standard"' },
+  { name: "Premium", value: '"premium"' },
+  { name: "Luxurious", value: '"luxurious"' },
+];
 
 export const ratings = [
-  "Any rating",
-  "At least one star",
-  "At least two stars",
-  "At least three stars",
-  "At least four stars",
-  "Five stars only",
+  { name: "Any rating", value: "null" },
+  { name: "At least one star", value: "1" },
+  { name: "At least two stars", value: "2" },
+  { name: "At least three stars", value: "3" },
+  { name: "At least four stars", value: "4" },
+  { name: "Five stars only", value: "5" },
 ];

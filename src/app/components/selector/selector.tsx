@@ -1,18 +1,31 @@
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { useState } from "react";
+import { ChoicesDescriptionAction } from "app/constants/models";
+import { useAppDispatch } from "app/redux/hooks";
+import { useEffect, useState } from "react";
 import "./style.scss";
 
 interface SelectorProps {
   label: string;
-  options: string[];
+  options: {
+    name: string;
+    value: string;
+  }[];
+  action: ChoicesDescriptionAction;
 }
 
-export function Selector({ label, options }: SelectorProps) {
-  const [value, setValue] = useState(options[0]);
+export function Selector({ label, options, action }: SelectorProps) {
+  const [defaultOption] = options;
+  const [value, setValue] = useState(defaultOption.value);
+  const dispatch = useAppDispatch();
 
   const handleChange = (event: SelectChangeEvent) => {
-    setValue(event.target.value as string);
+    setValue(event.target.value);
   };
+
+  useEffect(() => {
+    const trueType = JSON.parse(value);
+    dispatch(action(trueType));
+  }, [value, dispatch, action]);
 
   return (
     <FormControl variant="outlined" className="selector">
@@ -22,8 +35,8 @@ export function Selector({ label, options }: SelectorProps) {
           {label}
         </MenuItem>
         {options.map((item) => (
-          <MenuItem key={item} value={item}>
-            {item}
+          <MenuItem key={item.name} value={item.value}>
+            {item.name}
           </MenuItem>
         ))}
       </Select>
