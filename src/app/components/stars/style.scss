@@ -2,9 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 70px;
-  padding: 5px;
+  width: fit-content;
 
   &__single-star {
     position: relative;

@@ -1,12 +1,15 @@
-#apartments-page {
+.apartments-page {
+  width: 100%;
   flex: 1 1 auto;
   padding: 30px;
   overflow-x: hidden;
   display: flex;
-  gap: 30px;
+  gap: 80px;
+  justify-content: space-between;
 }
 
-#display {
+#display-group {
+  width: 1%;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
