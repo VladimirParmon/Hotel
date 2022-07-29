@@ -15,4 +15,5 @@ export const SearchbarAssembly = styled("div")`
 
 export const Searchbar = styled(TextField)`
   width: 100%;
+  min-width: 300px;
 `;
