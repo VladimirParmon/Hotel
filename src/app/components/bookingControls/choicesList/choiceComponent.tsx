@@ -1,6 +1,7 @@
 import { Checkbox, Typography } from "@mui/material";
 import { ChoicesDescriptionAction } from "app/constants/models";
 import { useAppDispatch } from "app/redux/hooks";
+import { ChoiceComponentContainer, TextContainer } from "./components";
 
 interface ChoiceComponentProps {
   name: string;
@@ -14,16 +15,16 @@ export function ChoiceComponent({ name, description, action }: ChoiceComponentPr
     dispatch(action(checked));
   }
   return (
-    <div className="choice-component">
+    <ChoiceComponentContainer>
       <Checkbox color="secondary" onChange={handleChange} />
-      <div className="choice-component__text">
+      <TextContainer>
         <Typography>{name}</Typography>
         {description && (
           <Typography fontSize={"0.8rem"} color="secondary">
             {description}
           </Typography>
         )}
-      </div>
-    </div>
+      </TextContainer>
+    </ChoiceComponentContainer>
   );
 }

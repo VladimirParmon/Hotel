@@ -18,8 +18,8 @@ export function GuestsCounter({ filters }: GuestsCounterProps) {
   const totalGuests = adults + children + infants;
 
   return (
-    <div className="guestsCounter">
-      <Typography className="guestsCounter__total">Total: {totalGuests} guest(s)</Typography>
+    <div>
+      <Typography sx={{ textAlign: "center" }}>Total: {totalGuests} guest(s)</Typography>
       <Divider sx={{ marginBottom: "20px" }} />
       <Counter
         name={GuestsTypes.ADULTS}

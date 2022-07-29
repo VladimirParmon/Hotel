@@ -1,7 +1,7 @@
 import Slider, { CustomArrowProps } from "react-slick";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import "./style.scss";
+import { SlickArrow } from "./components";
 
 interface SliderComponentProps {
   items: string[];
@@ -20,22 +20,22 @@ export function SliderComponent({ items }: SliderComponentProps) {
 
   function NextButton({ onClick }: CustomArrowProps) {
     return (
-      <button className="slick-arrow slick-arrow_next" onClick={onClick}>
+      <SlickArrow onClick={onClick} style={{ right: 0 }}>
         <ChevronRightIcon />
-      </button>
+      </SlickArrow>
     );
   }
 
   function PrevButton({ onClick }: CustomArrowProps) {
     return (
-      <button className="slick-arrow slick-arrow_previous" onClick={onClick}>
+      <SlickArrow onClick={onClick} style={{ left: 0 }}>
         <ChevronLeftIcon />
-      </button>
+      </SlickArrow>
     );
   }
 
   return (
-    <Slider {...settings}>
+    <Slider {...settings} className="slick-carousel__card">
       {items.map((el) => (
         <img alt={el} src={el} key={el} />
       ))}

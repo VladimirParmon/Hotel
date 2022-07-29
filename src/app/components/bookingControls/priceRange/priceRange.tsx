@@ -1,10 +1,10 @@
-import { Divider, Slider, TextField, Typography } from "@mui/material";
+import { Divider, TextField, Typography } from "@mui/material";
 import { FiltersRange } from "app/constants/models";
 import { updateFiltersPrice } from "app/redux/filtersSlice";
 import { useAppDispatch } from "app/redux/hooks";
 import InputAdornment from "@mui/material/InputAdornment";
-import "./style.scss";
 import { useState } from "react";
+import { Inputs, PriceRangeContainer, PriceSlider } from "./components";
 
 interface PriceRangeProps {
   price: FiltersRange;
@@ -48,11 +48,10 @@ export function PriceRange({ price }: PriceRangeProps) {
   }
 
   return (
-    <div className="price-range">
+    <PriceRangeContainer>
       <Typography sx={{ alignSelf: "center" }}>Price range:</Typography>
       <Divider />
-      <Slider
-        className="price-range__slider"
+      <PriceSlider
         value={sliderValue}
         onChange={handleSliderChange}
         onChangeCommitted={handleSliderValueDispatch}
@@ -62,7 +61,7 @@ export function PriceRange({ price }: PriceRangeProps) {
         max={15000}
         step={100}
       />
-      <div className="price-range__inputs">
+      <Inputs>
         <TextField
           name="min"
           type="number"
@@ -83,10 +82,10 @@ export function PriceRange({ price }: PriceRangeProps) {
             startAdornment: <InputAdornment position="start">$</InputAdornment>,
           }}
         />
-      </div>
+      </Inputs>
       <Typography sx={{ fontSize: "0.8rem" }} color="secondary">
         *Price per 24 hours of stay
       </Typography>
-    </div>
+    </PriceRangeContainer>
   );
 }

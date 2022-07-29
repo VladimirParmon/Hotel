@@ -1,8 +1,9 @@
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { GuestsTypes } from "app/constants/enums";
 import React from "react";
+import { ButtonsContainer, CounterButton, CounterContainer, Input } from "./components";
 
 type CounterProps = {
   name: GuestsTypes;
@@ -33,27 +34,27 @@ export const Counter: React.FC<CounterProps> = ({
   };
 
   return (
-    <div className="counter">
-      <Typography className="counter__label">{label}</Typography>
-      <div className="counter__buttons">
-        <Button
+    <CounterContainer>
+      <Typography>{label}</Typography>
+      <ButtonsContainer>
+        <CounterButton
           variant="contained"
           color="secondary"
           className="counter__button"
           onClick={handleDecrease}
         >
           <RemoveIcon fontSize="small" />
-        </Button>
-        <input className="counter__input" type="text" value={value} readOnly />
-        <Button
+        </CounterButton>
+        <Input value={value} readOnly />
+        <CounterButton
           variant="contained"
           color="secondary"
           className="counter__button"
           onClick={handleIncrease}
         >
           <AddIcon fontSize="small" />
-        </Button>
-      </div>
-    </div>
+        </CounterButton>
+      </ButtonsContainer>
+    </CounterContainer>
   );
 };

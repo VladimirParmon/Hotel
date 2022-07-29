@@ -1,8 +1,8 @@
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { ChoicesDescriptionAction } from "app/constants/models";
 import { useAppDispatch } from "app/redux/hooks";
 import { useEffect, useState } from "react";
-import "./style.scss";
+import { SelectorContainer } from "./components";
 
 interface SelectorProps {
   label: string;
@@ -28,7 +28,7 @@ export function Selector({ label, options, action }: SelectorProps) {
   }, [value, dispatch, action]);
 
   return (
-    <FormControl variant="outlined" className="selector">
+    <SelectorContainer variant="outlined">
       <InputLabel color="secondary">{label}</InputLabel>
       <Select label={label} value={value} color="secondary" onChange={handleChange}>
         <MenuItem value="" disabled>
@@ -40,6 +40,6 @@ export function Selector({ label, options, action }: SelectorProps) {
           </MenuItem>
         ))}
       </Select>
-    </FormControl>
+    </SelectorContainer>
   );
 }

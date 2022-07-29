@@ -1,8 +1,7 @@
-import { InputAdornment, TextField } from "@mui/material";
+import { InputAdornment } from "@mui/material";
 import { SortingOptions, SortingOrder } from "app/constants/enums";
 import SearchIcon from "@mui/icons-material/Search";
 import Selector from "../selector";
-import "./style.scss";
 import {
   apartmentType,
   beds,
@@ -30,6 +29,7 @@ import {
   updateFiltersRating,
   updateFiltersType,
 } from "app/redux/filtersSlice";
+import { DisplayControlsContainer, Searchbar, SearchbarAssembly } from "./components";
 
 export function DisplayControls() {
   const [sortingOptionsState, setSortingOptionsState] = useState(sortingOptions[0]);
@@ -58,13 +58,12 @@ export function DisplayControls() {
   }, [sortingOptionsState, sortingOrderState, handleOptionsAndOrderChange]);
 
   return (
-    <div className="display-controls">
-      <div className="display-controls__searchbar-assembly">
-        <TextField
+    <DisplayControlsContainer>
+      <SearchbarAssembly>
+        <Searchbar
           name="searchbar"
           color="secondary"
           placeholder="Search through apartments..."
-          className="display-controls__searchbar"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -90,12 +89,12 @@ export function DisplayControls() {
           options={itemsPerPage}
           action={updateFiltersItemsPerPage}
         />
-      </div>
+      </SearchbarAssembly>
       <Selector label={"Floor"} options={floors} action={updateFiltersFloor} />
       <Selector label={"Beds amount"} options={beds} action={updateFiltersBedsAmount} />
       <Selector label={"Apartment type"} options={apartmentType} action={updateFiltersType} />
       <Selector label={"Visitors rating"} options={ratings} action={updateFiltersRating} />
       <ChoiceComponent name="Has reviews" action={updateFiltersHasReviews} />
-    </div>
+    </DisplayControlsContainer>
   );
 }

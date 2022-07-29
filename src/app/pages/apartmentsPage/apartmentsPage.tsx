@@ -1,20 +1,21 @@
 import BookingControlsComponent from "app/components/bookingControls";
 import Display from "app/components/display";
 import { DisplayControls } from "app/components/displayControls/displayControls";
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
+import { ApartmentsPageContainer, DisplayGroup } from "./components";
 
 export function ApartmentsPage() {
   const ref = useRef<HTMLDivElement>(null);
-  function scrollToTop() {
+  const scrollToTop = useCallback(() => {
     ref.current?.scrollTo({ top: 0 });
-  }
+  }, []);
   return (
-    <div className="apartments-page" ref={ref}>
+    <ApartmentsPageContainer ref={ref}>
       <BookingControlsComponent />
-      <div id="display-group">
+      <DisplayGroup>
         <DisplayControls />
         <Display scrollToTop={scrollToTop} />
-      </div>
-    </div>
+      </DisplayGroup>
+    </ApartmentsPageContainer>
   );
 }

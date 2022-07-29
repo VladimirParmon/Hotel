@@ -3,7 +3,7 @@ import Header from "./app/layouts/header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import WelcomePage from "./app/pages/welcomePage";
 import { PaletteMode } from "./app/constants/models";
-import { createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { getDesignTokens } from "./app/material/theme";
 import { NavigationLinks } from "app/constants/enums";
 import ApartmentsPage from "app/pages/apartmentsPage";
@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from "app/redux/hooks";
 import { fetchApartmentsInfo, selectApartmentsInfo } from "app/redux/apartmentsSlice";
 import Loader from "app/components/loader";
 
-const ColorModeToggleContext = React.createContext({ toggleColorMode: () => {} });
+export const ColorModeToggleContext = React.createContext({ toggleColorMode: () => {} });
 
 function App() {
   const dispatch = useAppDispatch();
@@ -19,7 +19,9 @@ function App() {
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
-        setThemeMode((prevMode: PaletteMode) => (prevMode === "light" ? "dark" : "light"));
+        setThemeMode((prevMode: PaletteMode) => {
+          return prevMode === "light" ? "dark" : "light";
+        });
       },
     }),
     []
@@ -38,6 +40,7 @@ function App() {
         <ThemeProvider theme={theme}>
           {isDataLoaded ? (
             <BrowserRouter>
+              <CssBaseline />
               <Header />
               <Routes>
                 <Route path="/" element={<WelcomePage />} />

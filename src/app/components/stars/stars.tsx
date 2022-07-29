@@ -1,4 +1,4 @@
-import StarBorderIcon from "@mui/icons-material/StarBorder";
+import { Filling, Outline, SingleStar, StarsContainer } from "./components";
 import StarIcon from "@mui/icons-material/Star";
 
 interface StarsProps {
@@ -20,23 +20,18 @@ export function Stars({ starSize, rating }: StarsProps) {
     return float * 100;
   }
   return (
-    <div className="stars">
+    <StarsContainer>
       {getStars().map((width, i) => (
-        <div
-          key={i}
-          className="stars__single-star"
-          style={{ width: `${starSize}px`, height: `${starSize}px` }}
-        >
-          <StarBorderIcon className="stars__outline" color="secondary" />
-          <div className="stars__filling-container" style={{ width: `${width}%` }}>
+        <SingleStar key={i} style={{ width: `${starSize}px`, height: `${starSize}px` }}>
+          <Outline color="secondary" />
+          <Filling style={{ width: `${width}%` }}>
             <StarIcon
               color="secondary"
-              className="stars__filling"
               style={{ width: `${starSize}px`, height: `${starSize}px` }}
             />
-          </div>
-        </div>
+          </Filling>
+        </SingleStar>
       ))}
-    </div>
+    </StarsContainer>
   );
 }

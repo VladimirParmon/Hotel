@@ -3,6 +3,7 @@ import { useFilteredState } from "app/redux/useFilteredState";
 import Pagination from "@mui/material/Pagination";
 import Card from "../card";
 import { useEffect } from "react";
+import { DisplayContainer } from "./components";
 
 interface DisplayProps {
   scrollToTop: () => void;
@@ -20,7 +21,7 @@ export function Display({ scrollToTop }: DisplayProps) {
   }, [currentPage, scrollToTop]);
 
   return (
-    <div id="display">
+    <DisplayContainer>
       {currentPageData.map((apartment) => (
         <Card apartment={apartment} key={apartment.id} />
       ))}
@@ -30,6 +31,6 @@ export function Display({ scrollToTop }: DisplayProps) {
         onChange={handleChange}
         sx={{ width: "100%" }}
       />
-    </div>
+    </DisplayContainer>
   );
 }

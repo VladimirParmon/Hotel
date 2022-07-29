@@ -1,10 +1,11 @@
 import { Divider, Typography } from "@mui/material";
 import { ChoicesDescription } from "app/constants/models";
 import { ChoiceComponent } from "./choiceComponent";
+import { ChoicesListContainer } from "./components";
 
 export function ChoicesList({ sectionName, choices }: ChoicesDescription) {
   return (
-    <div className="choices-list">
+    <ChoicesListContainer>
       <Typography sx={{ alignSelf: "center" }}>{sectionName}</Typography>
       <Divider />
       {choices.map((choice) => (
@@ -15,6 +16,6 @@ export function ChoicesList({ sectionName, choices }: ChoicesDescription) {
           action={choice.action}
         />
       ))}
-    </div>
+    </ChoicesListContainer>
   );
 }

@@ -1,5 +1,5 @@
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import "./style.scss";
+import { InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { SelectorContainer } from "./components";
 
 interface SelectorWithoutStateProps<T> {
   label: string;
@@ -19,7 +19,7 @@ export function SelectorWithoutState<T extends string>({
   };
 
   return (
-    <FormControl variant="outlined" className="selector">
+    <SelectorContainer variant="outlined">
       <InputLabel color="secondary">{label}</InputLabel>
       <Select label={label} value={value} color="secondary" onChange={handleChange}>
         <MenuItem value="" disabled>
@@ -31,6 +31,6 @@ export function SelectorWithoutState<T extends string>({
           </MenuItem>
         ))}
       </Select>
-    </FormControl>
+    </SelectorContainer>
   );
 }

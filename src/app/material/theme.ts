@@ -1,5 +1,8 @@
 import { PaletteMode } from "../constants/models";
 
+const light = "light" as const;
+const dark = "dark" as const;
+
 const lightTheme = {
   palette: {
     primary: {
@@ -12,6 +15,7 @@ const lightTheme = {
       light: "#63e4ff",
       dark: "#00829f",
     },
+    mode: light,
   },
 };
 
@@ -19,7 +23,7 @@ const darkTheme = {
   palette: {
     primary: {
       main: "#2D3142",
-      light: "#565a6d",
+      light: "#616161",
       dark: "#04081c",
     },
     secondary: {
@@ -27,6 +31,7 @@ const darkTheme = {
       light: "#ffffff",
       dark: "#beb9a5",
     },
+    mode: dark,
   },
 };
 

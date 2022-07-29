@@ -1,5 +1,5 @@
 import { useTheme } from "@emotion/react";
-import { Button, Paper } from "@mui/material";
+import { Button } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 import DatePickerComponent from "app/components/bookingControls/datePicker";
 import GuestsCounter from "app/components/bookingControls/guestsCounter";
@@ -11,13 +11,17 @@ import { useNavigate } from "react-router";
 import { useCallback } from "react";
 import { NavigationLinks } from "app/constants/enums";
 import Loader from "app/components/loader";
+import {
+  ButtonsContainer,
+  DatePickers,
+  GreetingForm,
+  GreetingSpan,
+  WelcomePageContainer,
+} from "./components";
 
 export function WelcomePage() {
   const navigate = useNavigate();
-  const navigateToApartments = useCallback(
-    () => navigate(NavigationLinks.APARTMENTS, { replace: true }),
-    [navigate]
-  );
+  const navigateToApartments = useCallback(() => navigate(NavigationLinks.APARTMENTS), [navigate]);
 
   const theme = useTheme() as Theme;
   const mode: PaletteMode = theme.palette.mode;
@@ -32,26 +36,24 @@ export function WelcomePage() {
   }
 
   return loadedImage ? (
-    <div className="welcome-page" style={{ backgroundImage: `url(${loadedImage})` }}>
-      <Paper elevation={24} className="welcome-page__form">
-        <span className="welcome-page__greeting">
-          Let us find just the right apartment for you:
-        </span>
-        <div className="welcome-page__date-pickers">
+    <WelcomePageContainer style={{ backgroundImage: `url(${loadedImage})` }}>
+      <GreetingForm elevation={24} color="primary">
+        <GreetingSpan>Let us find just the right apartment for you:</GreetingSpan>
+        <DatePickers>
           <DatePickerComponent label="Arrival date" initialDate={filters.date.from} />
           <DatePickerComponent label="Departure date" initialDate={filters.date.to} />
-        </div>
+        </DatePickers>
         <GuestsCounter filters={filters} />
-        <div className="welcome-page__buttons">
+        <ButtonsContainer>
           <Button variant="outlined" color="secondary" onClick={clearFilters}>
             Clear
           </Button>
           <Button variant="contained" color="secondary" onClick={navigateToApartments}>
             Find an apartment
           </Button>
-        </div>
-      </Paper>
-    </div>
+        </ButtonsContainer>
+      </GreetingForm>
+    </WelcomePageContainer>
   ) : (
     <Loader />
   );
