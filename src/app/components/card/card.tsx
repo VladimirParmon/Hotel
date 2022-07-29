@@ -1,5 +1,7 @@
 import { Divider, Typography } from "@mui/material";
+import { NavigationLinks } from "app/constants/enums";
 import { IApartment } from "app/constants/models";
+import { useNavigate } from "react-router";
 import { SliderComponent } from "../slider/slider";
 import Stars from "../stars";
 import { CardContainer, CardDescription, CardInner, CardReviews } from "./components";
@@ -14,8 +16,10 @@ export function Card({ apartment }: CardProps) {
     "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     "https://images.unsplash.com/photo-1584132905271-512c958d674a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
   ];
+  const navigate = useNavigate();
+  const navigateToApartment = () => navigate(`${NavigationLinks.APARTMENTS}/${apartment.id}`);
   return (
-    <CardContainer elevation={5}>
+    <CardContainer elevation={5} onClick={navigateToApartment}>
       <SliderComponent items={pics} />
       <CardInner>
         <CardDescription>

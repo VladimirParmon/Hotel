@@ -10,6 +10,7 @@ import ApartmentsPage from "app/pages/apartmentsPage";
 import { useAppDispatch, useAppSelector } from "app/redux/hooks";
 import { fetchApartmentsInfo, selectApartmentsInfo } from "app/redux/apartmentsSlice";
 import Loader from "app/components/loader";
+import SingleApartmentPage from "app/pages/singleApartmentPage";
 
 export const ColorModeToggleContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -45,6 +46,10 @@ function App() {
               <Routes>
                 <Route path="/" element={<WelcomePage />} />
                 <Route path={NavigationLinks.APARTMENTS} element={<ApartmentsPage />} />
+                <Route
+                  path={`${NavigationLinks.APARTMENTS}/:id`}
+                  element={<SingleApartmentPage />}
+                />
               </Routes>
             </BrowserRouter>
           ) : (
