@@ -17,15 +17,15 @@ export const GreetingForm = styled(Paper)`
   width: 100%;
   height: 100%;
   max-width: 350px;
-  max-height: 540px;
+  max-height: 510px;
   transform: translateX(-100%);
   padding: 15px;
 `;
 
-export const GreetingSpan = styled("div")`
+export const GreetingSpan = styled("span")`
   display: block;
   position: relative;
-  font-size: 30px;
+  font-size: 1.7rem;
 `;
 
 export const DatePickers = styled("div")`
