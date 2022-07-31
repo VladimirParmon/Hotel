@@ -29,6 +29,7 @@ export interface IApartment {
   hasWiFi: boolean;
   hasAirConditioning: boolean;
   hasWorkspace: boolean;
+  photos: string[];
 }
 
 export interface FiltersRange {
