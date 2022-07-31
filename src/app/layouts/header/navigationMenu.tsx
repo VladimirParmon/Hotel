@@ -3,11 +3,15 @@ import { navigationOptions } from "app/constants/constants";
 import { useLocation } from "react-router-dom";
 import { NavigationOption, NavigationMenuComponent } from "./components";
 
-export function NavigationMenu() {
+interface NavigationMenuProps {
+  inHeader: boolean;
+}
+
+export function NavigationMenu({ inHeader }: NavigationMenuProps) {
   const currentPage = useLocation().pathname;
 
   return (
-    <NavigationMenuComponent>
+    <NavigationMenuComponent inHeader={inHeader}>
       {navigationOptions.map((option) => {
         const isActive = currentPage === option.link;
         return (

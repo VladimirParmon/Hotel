@@ -12,6 +12,7 @@ export const AppHeader = styled(AppBar)`
   position: relative;
   flex: 0 1 auto;
   cursor: pointer;
+  gap: 20px;
 `;
 
 export const Logo = styled("div")`
@@ -29,12 +30,20 @@ export const Logo = styled("div")`
   }
 `;
 
-export const NavigationMenuComponent = styled("div")`
-  display: flex;
+export const NavigationMenuComponent = styled("div", {
+  shouldForwardProp: (prop) => prop !== "inHeader",
+})<{ inHeader: boolean }>(
+  ({ inHeader, theme }) => `
+  ${inHeader ? "display: flex" : "display: none"};
+  ${`${theme.breakpoints.down("wideScreen")} {
+    display: ${inHeader ? "none" : "flex"};
+  }`}
+  background-color:${inHeader ? "none" : theme.palette.primary.main};
   justify-content: center;
   align-items: center;
   gap: 20px;
-`;
+`
+);
 
 export const NavigationOption = styled(NavLink)(
   ({ theme }) => `
@@ -54,20 +63,6 @@ export const NavigationOption = styled(NavLink)(
 `
 );
 
-// .navigationOption {
-//   &:link {
-//     color: #000;
-//   }
-
-//   &:visited {
-//     color: #000;
-//   }
-
-//   &:hover {
-//     color: red;
-//   }
-// }
-
 export const ProfileFaciaContainer = styled("div")`
   display: flex;
   justify-content: center;
@@ -80,4 +75,8 @@ export const Greeting = styled("div")`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
+  span {
+    white-space: nowrap;
+  }
 `;
