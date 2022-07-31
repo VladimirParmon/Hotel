@@ -3,7 +3,21 @@ import { PaletteMode } from "../constants/models";
 const light = "light" as const;
 const dark = "dark" as const;
 
+const breakpoints = {
+  breakpoints: {
+    values: {
+      tablets: 872,
+      smallScreen: 1100,
+      mediumScreen: 1350,
+      wideScreen: 1500,
+      welcome: 1000,
+      fullscreen: 1920,
+    },
+  },
+};
+
 const lightTheme = {
+  ...breakpoints,
   palette: {
     primary: {
       main: "#f5ebe7",
@@ -20,6 +34,7 @@ const lightTheme = {
 };
 
 const darkTheme = {
+  ...breakpoints,
   palette: {
     primary: {
       main: "#2D3142",
