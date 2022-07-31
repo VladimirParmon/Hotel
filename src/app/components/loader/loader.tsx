@@ -19,12 +19,9 @@ export function Loader({ isMain }: LoaderProps) {
         <div className="gooey" style={{ backgroundColor: theme.palette.primary.light }}>
           <span
             className="gooey__dot"
-            style={{ backgroundColor: theme.palette.secondary.contrastText }}
+            style={{ backgroundColor: theme.palette.text.primary }}
           ></span>
-          <div
-            className="gooey__dots"
-            style={{ backgroundColor: theme.palette.secondary.contrastText }}
-          >
+          <div className="gooey__dots" style={{ backgroundColor: theme.palette.text.primary }}>
             <span></span>
             <span></span>
             <span></span>
