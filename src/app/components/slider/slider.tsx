@@ -46,7 +46,7 @@ export function SliderComponent({ items }: SliderComponentProps) {
   return (
     <Slider {...settings} className="slick-carousel__card">
       {items.map((el) => (
-        <img alt={el} src={el} key={el} />
+        <img alt={el} src={el} key={el} className="slick-carousel__img" />
       ))}
     </Slider>
   );

@@ -25,6 +25,10 @@ body {
 }
 
 .slick-carousel {
+  & * {
+    max-height: inherit;
+  }
+
   &__card {
     .slick-dots {
       display: flex !important;
@@ -63,5 +67,9 @@ body {
         box-shadow: 0px 5px 5px black;
       }
     }
+  }
+
+  &__img {
+    object-fit: cover;
   }
 }
