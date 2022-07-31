@@ -6,9 +6,14 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 interface DatePickerProps {
   label: string;
   initialDate?: string | number;
+  handleChange: (newDate: Date | null) => void;
 }
 
-export function DatePickerComponent({ label, initialDate = Date.now() }: DatePickerProps) {
+export function DatePickerComponent({
+  label,
+  initialDate = Date.now(),
+  handleChange,
+}: DatePickerProps) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
@@ -17,7 +22,7 @@ export function DatePickerComponent({ label, initialDate = Date.now() }: DatePic
         label={label}
         value={initialDate}
         onChange={(newValue: Date | null) => {
-          console.log(newValue);
+          handleChange(newValue);
         }}
         renderInput={(params) => <TextField {...params} helperText={null} />}
       />

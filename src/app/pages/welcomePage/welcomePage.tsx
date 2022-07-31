@@ -1,7 +1,6 @@
 import { useTheme } from "@emotion/react";
 import { Button } from "@mui/material";
 import { Theme } from "@mui/material/styles";
-import DatePickerComponent from "app/components/bookingControls/datePicker";
 import GuestsCounter from "app/components/bookingControls/guestsCounter";
 import { useImageLoader } from "app/assets/useImageLoader";
 import { selectFiltersInfo, setDefaultFilters } from "app/redux/filtersSlice";
@@ -11,13 +10,8 @@ import { useNavigate } from "react-router";
 import { useCallback } from "react";
 import { NavigationLinks } from "app/constants/enums";
 import Loader from "app/components/loader";
-import {
-  ButtonsContainer,
-  DatePickers,
-  GreetingForm,
-  GreetingSpan,
-  WelcomePageContainer,
-} from "./components";
+import { ButtonsContainer, GreetingForm, GreetingSpan, WelcomePageContainer } from "./components";
+import { DateRange } from "app/components/bookingControls/datePicker/dateRange";
 
 export function WelcomePage() {
   const navigate = useNavigate();
@@ -39,10 +33,7 @@ export function WelcomePage() {
     <WelcomePageContainer style={{ backgroundImage: `url(${loadedImage})` }}>
       <GreetingForm elevation={24} color="primary">
         <GreetingSpan>Let us find just the right apartment for you:</GreetingSpan>
-        <DatePickers>
-          <DatePickerComponent label="Arrival date" initialDate={filters.date.from} />
-          <DatePickerComponent label="Departure date" initialDate={filters.date.to} />
-        </DatePickers>
+        <DateRange date={filters.date} />
         <GuestsCounter filters={filters} />
         <ButtonsContainer>
           <Button variant="outlined" color="secondary" onClick={clearFilters}>
