@@ -4,7 +4,7 @@ import { selectFiltersInfo } from "./filtersSlice";
 import { useAppSelector } from "./hooks";
 
 export function useFilteredState() {
-  const apartmentsData = useAppSelector(selectApartmentsInfo).entities;
+  const apartmentsData = useAppSelector(selectApartmentsInfo);
   const currentFilters = useAppSelector(selectFiltersInfo);
   const activeFilters = Object.entries(currentFilters).filter(
     ([, filterValue]) => filterValue !== false && filterValue !== null

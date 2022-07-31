@@ -58,7 +58,7 @@ export const {
   sortUsingRating,
 } = apartmentsSlice.actions;
 
-export const selectApartmentsInfo = (state: RootState) => state.apartments;
+export const selectApartmentsInfo = (state: RootState) => state.apartments.entities;
 
 export const fetchApartmentsInfo = (): AppThunk => (dispatch, getState) => {
   APIService.getApartmentsDataFromServer().then((data) => {
