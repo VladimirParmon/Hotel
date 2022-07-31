@@ -10,17 +10,21 @@ export const WelcomePageContainer = styled("div")`
   align-items: center;
 `;
 
-export const GreetingForm = styled(Paper)`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  height: 100%;
-  max-width: 350px;
-  max-height: 510px;
+export const GreetingForm = styled(Paper)(
+  ({ theme }) => `
+display: flex;
+flex-direction: column;
+gap: 20px;
+width: 100%;
+height: 100%;
+max-width: 350px;
+max-height: 510px;
+padding: 15px;
+${theme.breakpoints.up("wideScreen")} {
   transform: translateX(-100%);
-  padding: 15px;
-`;
+}
+`
+);
 
 export const GreetingSpan = styled("span")`
   display: block;

@@ -10,13 +10,22 @@ display: flex;
 gap: 80px;
 justify-content: space-between;
 scroll-behavior: smooth;
-background-color: ${theme.palette.primary.light}
+background-color: ${theme.palette.primary.light};
+${theme.breakpoints.down("tablets")} {
+  flex-direction: column;
+}
 `
 );
 
-export const DisplayGroup = styled("div")`
-  width: 1%;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-`;
+export const DisplayGroup = styled("div")(
+  ({ theme }) => `
+width: 1%;
+flex-grow: 1;
+display: flex;
+flex-direction: column;
+min-width: 415px;
+${theme.breakpoints.down("tablets")} {
+  min-width: 100%;
+}
+`
+);

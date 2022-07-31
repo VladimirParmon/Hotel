@@ -7,11 +7,16 @@ export const DisplayControlsContainer = styled("div")`
   gap: 15px;
 `;
 
-export const SearchbarAssembly = styled("div")`
+export const SearchbarAssembly = styled("div")(
+  ({ theme }) => `
   width: 100%;
   display: flex;
   gap: 15px;
-`;
+  ${theme.breakpoints.down("wideScreen")} {
+    flex-wrap: wrap;
+  }
+`
+);
 
 export const Searchbar = styled(TextField)`
   width: 100%;
