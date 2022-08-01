@@ -28,7 +28,7 @@ export const CarouselContainer = styled("div")(
 width: 100%;
 height: auto;
 max-width: 1450px;
-max-height: 720px;
+max-height: 728px;
 margin-bottom: 60px;
 
 & * {

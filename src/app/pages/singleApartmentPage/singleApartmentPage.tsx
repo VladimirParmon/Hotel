@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Paper } from "@mui/material";
 import ApartmentDescription from "app/components/apartmentDescription";
 import BookingWindow from "app/components/bookingWindow";
 import SliderComponent from "app/components/slider";
@@ -20,7 +20,9 @@ export function SingleApartmentPage() {
     <PageContainer>
       <HugeScreensBoundary>
         <CarouselContainer>
-          <SliderComponent items={apartment.photos} />
+          <Paper elevation={5}>
+            <SliderComponent items={apartment.photos} />
+          </Paper>
           <div style={{ display: "flex", gap: "20px", justifyContent: "space-between" }}>
             <div>
               <span style={{ fontSize: "2rem" }}>Apartment rating:</span>
