@@ -197,6 +197,7 @@ const premiumApartmentDescription = `
   bathtub and a shower in the bathroom, and include more high-end amenities. 
   Premium apartment offers guests desirable scenery for travelers to enjoy: 
   bay and city view from the large sized windows.
+  The room size or area is generally between 96 m² to 250 m².
 `;
 
 const luxuriousApartmentDescription = `

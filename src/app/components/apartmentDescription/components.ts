@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const Description = styled("div")(
@@ -67,6 +68,7 @@ export const SectionInner = styled("div", {
 `
 );
 
-export const DescriptionSpan = styled("span")`
+export const DescriptionSpan = styled(Typography)`
+  font-size: 1.5rem;
   width: 100%;
 `;
