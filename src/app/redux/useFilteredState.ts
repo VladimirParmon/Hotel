@@ -42,7 +42,7 @@ export function useFilteredState() {
         case "hasWiFi":
         case "hasAirConditioning":
         case "hasWorkspace":
-          if (apartment[key] !== false) result = false;
+          if (apartment[key] === false) result = false;
           break;
         case "date":
         case "guests":
