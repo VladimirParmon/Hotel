@@ -26,7 +26,7 @@ export const PriceSlider = styled(Slider)(
   margin-top: 10px;
   margin-bottom: 20px;
 
-  & * {
+  & *:not(span) {
     background-color: ${theme.palette.primary.dark};
   }
 `
