@@ -23,6 +23,18 @@ import {
   SortingOrder,
 } from "./enums";
 import { ChoicesDescription } from "./models";
+import BalconyIcon from "@mui/icons-material/Balcony";
+import AirIcon from "@mui/icons-material/Air";
+import WifiIcon from "@mui/icons-material/Wifi";
+import SpatialTrackingIcon from "@mui/icons-material/SpatialTracking";
+import WindowIcon from "@mui/icons-material/Window";
+import FireplaceIcon from "@mui/icons-material/Fireplace";
+import TableRestaurantIcon from "@mui/icons-material/TableRestaurant";
+import GroupIcon from "@mui/icons-material/Group";
+import PetsIcon from "@mui/icons-material/Pets";
+import SmokingRoomsIcon from "@mui/icons-material/SmokingRooms";
+import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
+import AccessibleIcon from "@mui/icons-material/Accessible";
 
 export const oneDayMs = 86_000_000;
 
@@ -148,4 +160,116 @@ export const itemsPerPage = [
   { name: "12", value: "12" },
   { name: "16", value: "16" },
   { name: "20", value: "20" },
+];
+
+const standardApartmentDescription = `
+  This room type can be found in most service apartments and 
+  hotels. Housekeeping services are provided every day, seven days of the week.
+  May be occupied by one or more people.
+  The room size or area is generally between 96 m² to 250 m².
+`;
+
+const premiumApartmentDescription = `
+  Premium rooms are  larger than their standard counterparts, include a 
+  bathtub and a shower in the bathroom, and include more high-end amenities. 
+  Premium apartment offers guests desirable scenery for travelers to enjoy: 
+  bay and city view from the large sized windows.
+`;
+
+const luxuriousApartmentDescription = `
+  The most expensive room provided by the hotel. 
+  Usually, only several are available at a time. 
+  Similar to the normal suites, a luxurious apartment always 
+  has one or more bedrooms and a living space with a strong 
+  emphasis on grand in-room decoration, high-quality amenities 
+  and supplies, and tailor-made services 
+  (e.g. personal butler during the stay).
+  The room size or area is generally between 80 m² to 350 m².
+`;
+
+export const typeDescriptions = {
+  standard: standardApartmentDescription,
+  premium: premiumApartmentDescription,
+  luxurious: luxuriousApartmentDescription,
+};
+
+export const conveniences = [
+  {
+    span: "Has a balcony",
+    icon: BalconyIcon,
+    mark: "hasBalcony",
+    dimmed: false,
+  },
+  {
+    span: "Has air conditioning",
+    icon: AirIcon,
+    mark: "hasAirConditioning",
+    dimmed: false,
+  },
+  {
+    span: "Has Wifi",
+    icon: WifiIcon,
+    mark: "hasWiFi",
+    dimmed: false,
+  },
+  {
+    span: "Has noise insulation",
+    icon: SpatialTrackingIcon,
+    mark: "hasNoiseInsulation",
+    dimmed: false,
+  },
+  {
+    span: "Has big windows",
+    icon: WindowIcon,
+    mark: "hasBigWindows",
+    dimmed: false,
+  },
+  {
+    span: "Has a fireplace",
+    icon: FireplaceIcon,
+    mark: "hasBigWindows",
+    dimmed: false,
+  },
+  {
+    span: "Has workspace",
+    icon: TableRestaurantIcon,
+    mark: "hasWorkspace",
+    dimmed: false,
+  },
+];
+
+export const freedoms = [
+  {
+    span: "Guests are allowed",
+    icon: GroupIcon,
+    mark: "guestsAllowed",
+    dimmed: false,
+  },
+  {
+    span: "Pets are allowed",
+    icon: PetsIcon,
+    mark: "petsAllowed",
+    dimmed: false,
+  },
+  {
+    span: "Smoking is not prohibited",
+    icon: SmokingRoomsIcon,
+    mark: "smokingAllowed",
+    dimmed: false,
+  },
+];
+
+export const accessability = [
+  {
+    span: "Has a wide corridor (no less than 91 cm wide)",
+    icon: AccessibilityNewIcon,
+    mark: "hasWideCorridor",
+    dimmed: false,
+  },
+  {
+    span: "Suitable for a disabled person",
+    icon: AccessibleIcon,
+    mark: "suitableForDisabled",
+    dimmed: false,
+  },
 ];

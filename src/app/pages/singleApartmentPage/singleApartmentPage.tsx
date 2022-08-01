@@ -21,8 +21,13 @@ export function SingleApartmentPage() {
       <HugeScreensBoundary>
         <CarouselContainer>
           <SliderComponent items={apartment.photos} />
-          <span style={{ fontSize: "2rem" }}>Apartment rating:</span>
-          <Stars starSize={30} rating={apartment.rating} />
+          <div style={{ display: "flex", gap: "20px", justifyContent: "space-between" }}>
+            <div>
+              <span style={{ fontSize: "2rem" }}>Apartment rating:</span>
+              <Stars starSize={30} rating={apartment.rating} />
+            </div>
+            <span style={{ fontSize: "2rem" }}>{apartment.type} apartment</span>
+          </div>
         </CarouselContainer>
         <BookingWindow apartment={apartment} filters={filters} highRes={true} />
         <ApartmentDescription apartment={apartment}>

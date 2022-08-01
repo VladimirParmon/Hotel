@@ -28,10 +28,8 @@ export const CarouselContainer = styled("div")(
 width: 100%;
 height: auto;
 max-width: 1450px;
-max-height: 600px;
-${theme.breakpoints.down("fullscreen")} {
-  margin-bottom: 70px;
-}
+max-height: 720px;
+margin-bottom: 60px;
 
 & * {
   max-height: inherit;
