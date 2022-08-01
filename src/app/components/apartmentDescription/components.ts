@@ -62,6 +62,8 @@ export const SectionInner = styled("div", {
 })<{ dimmed: boolean }>(
   ({ dimmed }) => `
   display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
   justify-content: center;
   align-items: center;
   opacity:${dimmed ? "0.2" : "1"};
@@ -70,5 +72,6 @@ export const SectionInner = styled("div", {
 
 export const DescriptionSpan = styled(Typography)`
   font-size: 1.5rem;
+  line-height: 3rem;
   width: 100%;
 `;

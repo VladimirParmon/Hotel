@@ -1,5 +1,8 @@
+import { Typography } from "@mui/material";
 import { accessability, conveniences, freedoms, typeDescriptions } from "app/constants/constants";
 import { IApartment } from "app/constants/models";
+import FeedbackForm from "../feedbackForm";
+
 import {
   Description,
   DescriptionSpan,
@@ -32,7 +35,6 @@ export function ApartmentDescription({ apartment, children }: ApartmentDescripti
     const hasSuchAccessability = apartment[mark];
     return { ...el, dimmed: !hasSuchAccessability };
   });
-  console.log(apartment);
   return (
     <Description>
       {children}
@@ -47,7 +49,7 @@ export function ApartmentDescription({ apartment, children }: ApartmentDescripti
               <h3 style={{ textAlign: "center" }}>Conveniences:</h3>
               {conveniencesChecked.map((el) => (
                 <SectionInner key={el.span} dimmed={el.dimmed}>
-                  <el.icon sx={{ fontSize: "4rem" }} color="secondary" />
+                  <el.icon sx={{ fontSize: "2.5rem" }} color="secondary" />
                   <DescriptionSpan>{el.span}</DescriptionSpan>
                 </SectionInner>
               ))}
@@ -58,7 +60,7 @@ export function ApartmentDescription({ apartment, children }: ApartmentDescripti
               <h3 style={{ textAlign: "center" }}>Terms of stay:</h3>
               {freedomsChecked.map((el) => (
                 <SectionInner key={el.span} dimmed={el.dimmed}>
-                  <el.icon sx={{ fontSize: "4rem" }} color="secondary" />
+                  <el.icon sx={{ fontSize: "2.5rem" }} color="secondary" />
                   <DescriptionSpan>{el.span}</DescriptionSpan>
                 </SectionInner>
               ))}
@@ -69,13 +71,19 @@ export function ApartmentDescription({ apartment, children }: ApartmentDescripti
               <h3 style={{ textAlign: "center" }}>Accessability:</h3>
               {accessabilityChecked.map((el) => (
                 <SectionInner key={el.span} dimmed={el.dimmed}>
-                  <el.icon sx={{ fontSize: "4rem" }} color="secondary" />
+                  <el.icon sx={{ fontSize: "2.5rem" }} color="secondary" />
                   <DescriptionSpan>{el.span}</DescriptionSpan>
                 </SectionInner>
               ))}
             </SectionInnerLeft>
           </Section>
         </Sections>
+        <div>
+          <h3>Feedback from customers</h3>
+          <Typography style={{ textAlign: "center" }}>No feedback so far</Typography>
+          <h3>Leave my feedback</h3>
+        </div>
+        <FeedbackForm />
       </Feed>
     </Description>
   );
