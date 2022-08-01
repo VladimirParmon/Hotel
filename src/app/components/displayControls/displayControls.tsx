@@ -13,7 +13,7 @@ import {
 } from "app/constants/constants";
 import { ChoiceComponent } from "../bookingControls/choicesList/choiceComponent";
 import { useCallback, useEffect, useState } from "react";
-import { useAppDispatch } from "app/redux/hooks";
+import { useAppDispatch, useAppSelector } from "app/redux/hooks";
 import {
   sortUsingNumber,
   sortUsingPopularity,
@@ -22,6 +22,7 @@ import {
 } from "app/redux/apartmentsSlice";
 import { SelectorWithoutState } from "../selector/selectorWithoutState";
 import {
+  selectFiltersInfo,
   updateFiltersBedsAmount,
   updateFiltersFloor,
   updateFiltersHasReviews,
@@ -35,6 +36,7 @@ export function DisplayControls() {
   const [sortingOptionsState, setSortingOptionsState] = useState(sortingOptions[0]);
   const [sortingOrderState, setSortingOrderState] = useState(sortingOrder[0]);
   const dispatch = useAppDispatch();
+  const filters = useAppSelector(selectFiltersInfo);
 
   const handleOptionsAndOrderChange = useCallback(() => {
     switch (sortingOptionsState) {
@@ -94,7 +96,11 @@ export function DisplayControls() {
       <Selector label={"Beds amount"} options={beds} action={updateFiltersBedsAmount} />
       <Selector label={"Apartment type"} options={apartmentType} action={updateFiltersType} />
       <Selector label={"Visitors rating"} options={ratings} action={updateFiltersRating} />
-      <ChoiceComponent name="Has reviews" action={updateFiltersHasReviews} />
+      <ChoiceComponent
+        name="Has reviews"
+        action={updateFiltersHasReviews}
+        value={filters.hasReviews}
+      />
     </DisplayControlsContainer>
   );
 }

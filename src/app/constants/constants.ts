@@ -69,13 +69,33 @@ export const choices: ChoicesDescription[] = [
   {
     sectionName: ChoicesSections.CONVENIENCES,
     choices: [
-      { name: Choices_Conveniences.BALCONY, action: updateFiltersHasBalcony },
-      { name: Choices_Conveniences.CONDITIONER, action: updateFiltersHasAirConditioning },
-      { name: Choices_Conveniences.FIREPLACE, action: updateFiltersHasFireplace },
-      { name: Choices_Conveniences.INSULATION, action: updateFiltersHasNoiseInsulation },
-      { name: Choices_Conveniences.WIFI, action: updateFiltersHasWiFi },
-      { name: Choices_Conveniences.WINDOWS, action: updateFiltersHasBigWindows },
-      { name: Choices_Conveniences.WORKSPACE, action: updateFiltersHasWorkspace },
+      { name: Choices_Conveniences.BALCONY, action: updateFiltersHasBalcony, mark: "hasBalcony" },
+      {
+        name: Choices_Conveniences.CONDITIONER,
+        action: updateFiltersHasAirConditioning,
+        mark: "hasAirConditioning",
+      },
+      {
+        name: Choices_Conveniences.FIREPLACE,
+        action: updateFiltersHasFireplace,
+        mark: "hasFireplace",
+      },
+      {
+        name: Choices_Conveniences.INSULATION,
+        action: updateFiltersHasNoiseInsulation,
+        mark: "hasNoiseInsulation",
+      },
+      { name: Choices_Conveniences.WIFI, action: updateFiltersHasWiFi, mark: "hasWiFi" },
+      {
+        name: Choices_Conveniences.WINDOWS,
+        action: updateFiltersHasBigWindows,
+        mark: "hasBigWindows",
+      },
+      {
+        name: Choices_Conveniences.WORKSPACE,
+        action: updateFiltersHasWorkspace,
+        mark: "hasWorkspace",
+      },
     ],
   },
   {
@@ -85,9 +105,10 @@ export const choices: ChoicesDescription[] = [
         name: Choices_Terms.GUESTS,
         action: updateFiltersGuestsAllowed,
         description: Choices_Terms.GUESTS_DESCRIPTION,
+        mark: "guestsAllowed",
       },
-      { name: Choices_Terms.PETS, action: updateFiltersPetsAllowed },
-      { name: Choices_Terms.SMOKING, action: updateFiltersSmokingAllowed },
+      { name: Choices_Terms.PETS, action: updateFiltersPetsAllowed, mark: "petsAllowed" },
+      { name: Choices_Terms.SMOKING, action: updateFiltersSmokingAllowed, mark: "smokingAllowed" },
     ],
   },
   {
@@ -97,11 +118,13 @@ export const choices: ChoicesDescription[] = [
         name: Choices_Accessability.CORRIDOR,
         action: updateFiltersHasWideCorridor,
         description: Choices_Accessability.CORRIDOR_DESCRIPTION,
+        mark: "hasWideCorridor",
       },
       {
         name: Choices_Accessability.DISABLED,
         action: updateFiltersSuitableForDisabled,
         description: Choices_Accessability.DISABLED_DESCRIPTION,
+        mark: "suitableForDisabled",
       },
     ],
   },

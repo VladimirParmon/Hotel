@@ -7,16 +7,17 @@ interface ChoiceComponentProps {
   name: string;
   action: ChoicesDescriptionAction;
   description?: string;
+  value: boolean;
 }
 
-export function ChoiceComponent({ name, description, action }: ChoiceComponentProps) {
+export function ChoiceComponent({ name, description, action, value }: ChoiceComponentProps) {
   const dispatch = useAppDispatch();
   function handleChange(event: React.ChangeEvent<HTMLInputElement>, checked: boolean) {
     dispatch(action(checked));
   }
   return (
     <ChoiceComponentContainer>
-      <Checkbox color="secondary" onChange={handleChange} />
+      <Checkbox color="secondary" onChange={handleChange} checked={value} />
       <TextContainer>
         <Typography>{name}</Typography>
         {description && (

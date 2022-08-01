@@ -20,6 +20,7 @@ export function BookingControlsComponent() {
           sectionName={section.sectionName}
           choices={section.choices}
           key={section.sectionName}
+          filters={filters}
         />
       ))}
     </BookingControls>

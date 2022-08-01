@@ -81,5 +81,7 @@ export interface ChoicesDescription {
     name: Choices_Conveniences | Choices_Terms | Choices_Accessability;
     action: ChoicesDescriptionAction;
     description?: string;
+    mark: keyof IFilters;
   }[];
+  filters?: IFilters;
 }
