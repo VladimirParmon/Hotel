@@ -8,6 +8,7 @@ export const WelcomePageContainer = styled("div")`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
 `;
 
 export const GreetingForm = styled(Paper)(
@@ -18,8 +19,9 @@ gap: 20px;
 width: 100%;
 height: 100%;
 max-width: 350px;
-max-height: 510px;
+height: 510px;
 padding: 15px;
+margin-top: 50px;
 ${theme.breakpoints.up("wideScreen")} {
   transform: translateX(-100%);
 }
