@@ -75,3 +75,12 @@ body {
     object-fit: cover;
   }
 }
+
+.expandable-menu-enter {
+  height: 290px;
+  transition: 0.5s all;
+}
+.expandable-menu-exit {
+  height: 0px;
+  transition: 0.5s all;
+}

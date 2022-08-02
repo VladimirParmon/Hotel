@@ -31,9 +31,9 @@ export const Logo = styled("div")`
 `;
 
 export const NavigationMenuComponent = styled("div", {
-  shouldForwardProp: (prop) => prop !== "inHeader",
-})<{ inHeader: boolean }>(
-  ({ inHeader, theme }) => `
+  shouldForwardProp: (prop) => prop !== "inHeader" && prop !== "isExpanded",
+})<{ inHeader: boolean; isExpanded: boolean }>(
+  ({ inHeader, theme, isExpanded }) => `
   ${inHeader ? "display: flex" : "display: none"};
   ${`${theme.breakpoints.down("wideScreen")} {
     display: ${inHeader ? "none" : "flex"};
@@ -41,7 +41,49 @@ export const NavigationMenuComponent = styled("div", {
   background-color:${inHeader ? "none" : theme.palette.primary.main};
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
+  transition: 1s;
+
+  ${theme.breakpoints.down("doubleStackMenu")} {
+    flex-direction: column;
+  }
+
+  ${theme.breakpoints.down("expandableMenu")} {
+    min-height: ${isExpanded ? "290px" : "0"};
+    max-height: ${isExpanded ? "290px" : "0"};
+  }
+
+  div {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    ${theme.breakpoints.down("expandableMenu")} {
+      flex-direction: column;
+    }
+  }
+`
+);
+
+export const ExpandButton = styled("div", {
+  shouldForwardProp: (prop) => prop !== "isExpanded",
+})<{ isExpanded: boolean }>(
+  ({ theme, isExpanded }) => `
+  display: none;
+  width: 100%;
+  max-height: 40px;
+  background-color: ${theme.palette.secondary.dark};
+  cursor: pointer;
+  justify-content: center;
+
+  span {
+    transform: rotate(${isExpanded ? "-90deg" : "90deg"});
+    user-select: none;
+  }
+
+  ${theme.breakpoints.down("expandableMenu")} {
+    display: flex;
+  }
 `
 );
 

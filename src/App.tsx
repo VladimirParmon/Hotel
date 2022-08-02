@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from "app/redux/hooks";
 import { fetchApartmentsInfo, selectApartmentsInfo } from "app/redux/apartmentsSlice";
 import Loader from "app/components/loader";
 import SingleApartmentPage from "app/pages/singleApartmentPage";
+import { NavigationMenu } from "app/layouts/header/navigationMenu";
 
 export const ColorModeToggleContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -33,16 +34,17 @@ function App() {
     dispatch(fetchApartmentsInfo());
   }, [dispatch]);
 
-  const isDataLoaded = useAppSelector(selectApartmentsInfo).entities.length;
+  const isDataLoaded = useAppSelector(selectApartmentsInfo).length;
 
   return (
     <React.Fragment>
       <ColorModeToggleContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
+          <CssBaseline />
           {isDataLoaded ? (
             <BrowserRouter>
-              <CssBaseline />
               <Header />
+              <NavigationMenu inHeader={false} />
               <Routes>
                 <Route path="/" element={<WelcomePage />} />
                 <Route path={NavigationLinks.APARTMENTS} element={<ApartmentsPage />} />

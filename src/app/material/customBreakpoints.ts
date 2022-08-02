@@ -6,6 +6,8 @@ declare module "@mui/material/styles" {
     lg: false;
     xl: false;
     tablets: true;
+    doubleStackMenu: true;
+    expandableMenu: true;
     smallScreen: true;
     mediumScreen: true;
     wideScreen: true;
