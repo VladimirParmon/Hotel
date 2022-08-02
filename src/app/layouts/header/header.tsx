@@ -3,19 +3,25 @@ import { NavigationMenu } from "./navigationMenu";
 import { ProfileFacia } from "./profileFacia";
 import { useNavigate } from "react-router";
 import CustomSwitch from "app/components/switch";
-import { AppHeader, Logo } from "./components";
+import { AppHeader, Logo, Settings, SettingsContainer } from "./components";
+import LanguageSelector from "app/components/languageSelector";
 
 export function Header() {
   const navigate = useNavigate();
-  const handleClick = () => navigate("/");
+  const goHome = () => navigate("/");
+  const goProfile = () => navigate("/profile");
   return (
     <AppHeader color="primary">
-      <Logo onClick={handleClick}>
+      <Logo onClick={goHome}>
         <RoomServiceIcon />
         <span>Hotel project</span>
       </Logo>
       <NavigationMenu inHeader={true} />
-      <CustomSwitch />
+      <Settings onClick={goProfile} />
+      <SettingsContainer>
+        <CustomSwitch />
+        <LanguageSelector />
+      </SettingsContainer>
       <ProfileFacia />
     </AppHeader>
   );

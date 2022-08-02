@@ -1,6 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { AppBar } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 export const AppHeader = styled(AppBar)`
   display: flex;
@@ -105,12 +106,17 @@ export const NavigationOption = styled(NavLink)(
 `
 );
 
-export const ProfileFaciaContainer = styled("div")`
+export const ProfileFaciaContainer = styled("div")(
+  ({ theme }) => `
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
-`;
+  ${theme.breakpoints.down("expandableMenu")} {
+    display: none;
+  }
+`
+);
 
 export const Greeting = styled("div")`
   display: flex;
@@ -122,3 +128,27 @@ export const Greeting = styled("div")`
     white-space: nowrap;
   }
 `;
+
+export const SettingsContainer = styled("div")(
+  ({ theme }) => `
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  ${theme.breakpoints.down("expandableMenu")} {
+    display: none;
+  }
+`
+);
+
+export const Settings = styled(SettingsIcon)(
+  ({ theme }) => `
+  font-size: 2rem;
+  transition: 0.4s;
+  &:hover {
+    transform: rotate(180deg);
+  }
+  ${theme.breakpoints.up("expandableMenu")} {
+    display: none;
+  }
+`
+);

@@ -3,16 +3,29 @@ import { styled } from "@mui/material/styles";
 import { SwitchProps } from "@mui/material/Switch";
 import { useContext } from "react";
 import { ColorModeToggleContext } from "App";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+
+const Container = styled("div")`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+`;
 
 export const CustomSwitch = styled((props: SwitchProps) => {
   const toggle = useContext(ColorModeToggleContext);
   return (
-    <Switch
-      focusVisibleClassName=".Mui-focusVisible"
-      disableRipple
-      {...props}
-      onChange={toggle.toggleColorMode}
-    />
+    <Container>
+      <LightModeIcon />
+      <Switch
+        focusVisibleClassName=".Mui-focusVisible"
+        disableRipple
+        {...props}
+        onChange={toggle.toggleColorMode}
+      />
+      <DarkModeIcon />
+    </Container>
   );
 })(({ theme }) => {
   //console.log(theme);
