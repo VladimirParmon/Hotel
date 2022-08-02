@@ -16,8 +16,20 @@ const breakpoints = {
   },
 };
 
+const typography = {
+  typography: {
+    h2: {
+      fontSize: "2rem",
+    },
+    h3: {
+      fontSize: "1.3rem",
+    },
+  },
+};
+
 const lightTheme = {
   ...breakpoints,
+  ...typography,
   palette: {
     primary: {
       main: "#f5ebe7",
@@ -35,6 +47,7 @@ const lightTheme = {
 
 const darkTheme = {
   ...breakpoints,
+  ...typography,
   palette: {
     primary: {
       main: "#2D3142",

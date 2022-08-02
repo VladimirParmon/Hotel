@@ -8,6 +8,7 @@ import {
   DescriptionSpan,
   Feed,
   Section,
+  SectionHeading,
   SectionInner,
   SectionInnerLeft,
   SectionInnerRight,
@@ -40,13 +41,15 @@ export function ApartmentDescription({ apartment, children }: ApartmentDescripti
       {children}
       <Feed>
         <div style={{ textAlign: "justify" }}>
-          <h2>What to expect?</h2>
-          <DescriptionSpan>{typeDescriptions[apartment.type]}</DescriptionSpan>
+          <Typography variant="h2">What to expect?</Typography>
+          <DescriptionSpan sx={{ fontSize: "1.3rem", marginBottom: "20px" }}>
+            {typeDescriptions[apartment.type]}
+          </DescriptionSpan>
         </div>
         <Sections>
           <Section>
             <SectionInnerLeft>
-              <h3 style={{ textAlign: "center" }}>Conveniences:</h3>
+              <SectionHeading variant="h3">Conveniences:</SectionHeading>
               {conveniencesChecked.map((el) => (
                 <SectionInner key={el.span} dimmed={el.dimmed}>
                   <el.icon sx={{ fontSize: "2.5rem" }} color="secondary" />
@@ -57,7 +60,7 @@ export function ApartmentDescription({ apartment, children }: ApartmentDescripti
           </Section>
           <Section>
             <SectionInnerRight>
-              <h3 style={{ textAlign: "center" }}>Terms of stay:</h3>
+              <SectionHeading variant="h3">Terms of stay:</SectionHeading>
               {freedomsChecked.map((el) => (
                 <SectionInner key={el.span} dimmed={el.dimmed}>
                   <el.icon sx={{ fontSize: "2.5rem" }} color="secondary" />
@@ -68,7 +71,7 @@ export function ApartmentDescription({ apartment, children }: ApartmentDescripti
           </Section>
           <Section>
             <SectionInnerLeft>
-              <h3 style={{ textAlign: "center" }}>Accessability:</h3>
+              <SectionHeading variant="h3">Accessability:</SectionHeading>
               {accessabilityChecked.map((el) => (
                 <SectionInner key={el.span} dimmed={el.dimmed}>
                   <el.icon sx={{ fontSize: "2.5rem" }} color="secondary" />
@@ -78,10 +81,15 @@ export function ApartmentDescription({ apartment, children }: ApartmentDescripti
             </SectionInnerLeft>
           </Section>
         </Sections>
-        <div>
-          <h3>Feedback from customers</h3>
-          <Typography style={{ textAlign: "center" }}>No feedback so far</Typography>
-          <h3>Leave my feedback</h3>
+        <div style={{ padding: "20px" }}>
+          <SectionHeading variant="h3">Feedback from customers</SectionHeading>
+          {apartment.reviews.length ? (
+            <p>reviews go here</p>
+          ) : (
+            <DescriptionSpan style={{ textAlign: "center" }}>
+              No feedback so far. Be first!
+            </DescriptionSpan>
+          )}
         </div>
         <FeedbackForm />
       </Feed>

@@ -20,9 +20,7 @@ export function SingleApartmentPage() {
     <PageContainer>
       <HugeScreensBoundary>
         <CarouselContainer>
-          <Paper elevation={5}>
-            <SliderComponent items={apartment.photos} />
-          </Paper>
+          <SliderComponent items={apartment.photos} />
           <div style={{ display: "flex", gap: "20px", justifyContent: "space-between" }}>
             <div>
               <span style={{ fontSize: "2rem" }}>Apartment rating:</span>

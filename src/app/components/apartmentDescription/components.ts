@@ -17,7 +17,7 @@ export const Feed = styled("div")(
 display: flex;
 flex-direction: column;
 width: 100%;
-max-width: 1400px;
+max-width: 1450px;
 ${theme.breakpoints.up("fullscreen")} {
   justify-content: space-between;
 }
@@ -71,7 +71,13 @@ export const SectionInner = styled("div", {
 );
 
 export const DescriptionSpan = styled(Typography)`
-  font-size: 1.5rem;
-  line-height: 3rem;
+  font-size: 1rem;
+  line-height: 2.5rem;
+  font-weight: 300;
   width: 100%;
+`;
+
+export const SectionHeading = styled(Typography)`
+  text-align: center;
+  margin-bottom: 20px;
 `;

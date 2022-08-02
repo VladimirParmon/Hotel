@@ -29,7 +29,9 @@ width: 100%;
 height: auto;
 max-width: 1450px;
 max-height: 728px;
-margin-bottom: 60px;
+${theme.breakpoints.up("smallScreen")} {
+  margin-bottom: 80px;
+};
 
 & * {
   max-height: inherit;
