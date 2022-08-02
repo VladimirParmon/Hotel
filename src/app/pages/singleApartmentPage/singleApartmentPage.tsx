@@ -7,7 +7,14 @@ import { selectFiltersInfo } from "app/redux/filtersSlice";
 import { useAppSelector } from "app/redux/hooks";
 import { useSingleApartmentInfo } from "app/redux/useSingleApartmentInfo";
 import { useParams } from "react-router-dom";
-import { CarouselContainer, HugeScreensBoundary, PageContainer } from "./components";
+import {
+  CarouselContainer,
+  HugeScreensBoundary,
+  PageContainer,
+  RatingAndType,
+  RatingSpan,
+  TypeSpan,
+} from "./components";
 
 export function SingleApartmentPage() {
   const { id } = useParams();
@@ -21,13 +28,16 @@ export function SingleApartmentPage() {
       <HugeScreensBoundary>
         <CarouselContainer>
           <SliderComponent items={apartment.photos} />
-          <div style={{ display: "flex", gap: "20px", justifyContent: "space-between" }}>
+          <RatingAndType>
             <div>
-              <span style={{ fontSize: "2rem" }}>Apartment rating:</span>
+              <RatingSpan>Apartment rating:</RatingSpan>
               <Stars starSize={30} rating={apartment.rating} />
             </div>
-            <span style={{ fontSize: "2rem" }}>{apartment.type} apartment</span>
-          </div>
+            <span>
+              <TypeSpan>{apartment.type}</TypeSpan>
+              <RatingSpan>apartment</RatingSpan>
+            </span>
+          </RatingAndType>
         </CarouselContainer>
         <BookingWindow apartment={apartment} filters={filters} highRes={true} />
         <ApartmentDescription apartment={apartment}>

@@ -38,3 +38,31 @@ ${theme.breakpoints.up("smallScreen")} {
 }
 `
 );
+
+export const RatingAndType = styled("div")(
+  ({ theme }) => `
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+`
+);
+
+export const RatingSpan = styled("span")(
+  ({ theme }) => `
+  font-size: 2rem;
+  ${theme.breakpoints.down("smallerDescription")} {
+    display: none;
+  }
+`
+);
+
+export const TypeSpan = styled("span")(
+  ({ theme }) => `
+  margin-right: 10px; 
+  font-size: 2rem;
+  ${theme.breakpoints.down("smallerDescription")} {
+    font-size: 1.5rem;
+  }
+`
+);

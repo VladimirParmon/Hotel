@@ -8,6 +8,7 @@ const breakpoints = {
     values: {
       tablets: 872,
       expandableMenu: 600,
+      smallerDescription: 700,
       doubleStackMenu: 1000,
       smallScreen: 1100,
       mediumScreen: 1350,
