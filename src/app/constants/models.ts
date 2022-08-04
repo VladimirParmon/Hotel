@@ -67,8 +67,28 @@ export interface IFilters {
   itemsPerPage: number;
 }
 
-export interface apartmentsState {
+export interface ApartmentsState {
   entities: IApartment[];
+}
+
+export interface UserState {
+  userData: UserData | null;
+  isLoggedIn: boolean;
+}
+
+export interface UserData {
+  accessToken: string;
+  userId: string;
+  userFirstName: string;
+  userLastName: string;
+  userEmail: string;
+  userDateOfBirth: Date | string;
+  userGender: "male" | "female";
+  userAdminStatus: boolean;
+}
+
+export interface ErrorState {
+  hasError: boolean;
 }
 
 export type PaletteMode = "light" | "dark";

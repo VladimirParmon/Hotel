@@ -3,7 +3,7 @@ import Header from "./app/layouts/header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import WelcomePage from "./app/pages/welcomePage";
 import { PaletteMode } from "./app/constants/models";
-import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { createTheme, CssBaseline, ThemeProvider, Typography } from "@mui/material";
 import { getDesignTokens } from "./app/material/theme";
 import { NavigationLinks } from "app/constants/enums";
 import ApartmentsPage from "app/pages/apartmentsPage";
@@ -12,6 +12,8 @@ import { fetchApartmentsInfo, selectApartmentsInfo } from "app/redux/apartmentsS
 import Loader from "app/components/loader";
 import SingleApartmentPage from "app/pages/singleApartmentPage";
 import { NavigationMenu } from "app/layouts/header/navigationMenu";
+import { fetchUserData } from "app/redux/userSlice";
+import { selectErrorState } from "app/redux/errorSlice";
 
 export const ColorModeToggleContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -32,33 +34,39 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchApartmentsInfo());
+    if (localStorage.getItem("userId")) dispatch(fetchUserData());
   }, [dispatch]);
 
+  const fetchingError = useAppSelector(selectErrorState);
   const isDataLoaded = useAppSelector(selectApartmentsInfo).length;
 
   return (
     <React.Fragment>
-      <ColorModeToggleContext.Provider value={colorMode}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {isDataLoaded ? (
-            <BrowserRouter>
-              <Header />
-              <NavigationMenu inHeader={false} />
-              <Routes>
-                <Route path="/" element={<WelcomePage />} />
-                <Route path={NavigationLinks.APARTMENTS} element={<ApartmentsPage />} />
-                <Route
-                  path={`${NavigationLinks.APARTMENTS}/:id`}
-                  element={<SingleApartmentPage />}
-                />
-              </Routes>
-            </BrowserRouter>
-          ) : (
-            <Loader isMain />
-          )}
-        </ThemeProvider>
-      </ColorModeToggleContext.Provider>
+      {fetchingError ? (
+        <Typography variant="h2">Server is unavailable. Please try later</Typography>
+      ) : (
+        <ColorModeToggleContext.Provider value={colorMode}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            {isDataLoaded ? (
+              <BrowserRouter>
+                <Header />
+                <NavigationMenu inHeader={false} />
+                <Routes>
+                  <Route path="/" element={<WelcomePage />} />
+                  <Route path={NavigationLinks.APARTMENTS} element={<ApartmentsPage />} />
+                  <Route
+                    path={`${NavigationLinks.APARTMENTS}/:id`}
+                    element={<SingleApartmentPage />}
+                  />
+                </Routes>
+              </BrowserRouter>
+            ) : (
+              <Loader isMain />
+            )}
+          </ThemeProvider>
+        </ColorModeToggleContext.Provider>
+      )}
     </React.Fragment>
   );
 }

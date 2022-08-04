@@ -1,11 +1,15 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import apartmentsReducer from "./apartmentsSlice";
 import filtersReducer from "./filtersSlice";
+import userReducer from "./userSlice";
+import errorReducer from "./errorSlice";
 
 export const store = configureStore({
   reducer: {
     apartments: apartmentsReducer,
     filters: filtersReducer,
+    user: userReducer,
+    fetchingError: errorReducer,
   },
 });
 

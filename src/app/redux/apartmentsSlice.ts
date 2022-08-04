@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { apartmentsState } from "../constants/models";
+import { ApartmentsState } from "../constants/models";
 import { RootState, AppThunk } from "./store";
 import * as APIService from "../../app/services/APIService";
 import { SortingOrder } from "app/constants/enums";
+import { updateErrorState } from "./errorSlice";
 
-const initialState: apartmentsState = {
+const initialState: ApartmentsState = {
   entities: [],
 };
 
@@ -61,9 +62,11 @@ export const {
 export const selectApartmentsInfo = (state: RootState) => state.apartments.entities;
 
 export const fetchApartmentsInfo = (): AppThunk => (dispatch, getState) => {
-  APIService.getApartmentsDataFromServer().then((data) => {
-    dispatch(saveFetchedApartmentsInfoToStore(data));
-  });
+  APIService.getApartmentsDataFromServer()
+    .then((data) => {
+      dispatch(saveFetchedApartmentsInfoToStore(data));
+    })
+    .catch(() => dispatch(updateErrorState(true)));
 };
 
 export default apartmentsSlice.reducer;
