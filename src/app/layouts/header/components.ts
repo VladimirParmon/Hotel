@@ -132,8 +132,7 @@ export const Greeting = styled("div")`
 export const SettingsContainer = styled("div")(
   ({ theme }) => `
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  gap: 10px;
   ${theme.breakpoints.down("expandableMenu")} {
     display: none;
   }
