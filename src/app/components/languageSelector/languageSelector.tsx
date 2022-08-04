@@ -11,7 +11,7 @@ export default function LanguageSelector() {
   };
 
   return (
-    <FormControl sx={{ minWidth: "70px" }} size="small">
+    <FormControl sx={{ minWidth: "70px" }} size="small" color="secondary">
       <Select value={language} onChange={handleChange}>
         <MenuItem value={"en"}>EN</MenuItem>
         <MenuItem value={"ru"}>RU</MenuItem>
