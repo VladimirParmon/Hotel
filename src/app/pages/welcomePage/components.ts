@@ -21,7 +21,6 @@ height: 100%;
 max-width: 350px;
 height: 510px;
 padding: 15px;
-margin-top: 50px;
 ${theme.breakpoints.up("wideScreen")} {
   transform: translateX(-100%);
 }
