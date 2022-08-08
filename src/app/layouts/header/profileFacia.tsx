@@ -1,14 +1,29 @@
 import { Button } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
+import { LoginModalWindow, RegistrationModalWindow } from "app/components/modalWindows";
 import { useAppSelector } from "app/redux/hooks";
 import { selectUserInfo } from "app/redux/userSlice";
+import { useState } from "react";
+import Popup from "reactjs-popup";
 import { Greeting, ProfileFaciaContainer } from "./components";
 
 export function ProfileFacia() {
   const isLoggedIn: boolean = useAppSelector(selectUserInfo).isLoggedIn;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState("login");
+
+  function openModal(mode: "login" | "register") {
+    setModalMode(mode);
+    setIsModalOpen(true);
+  }
+
+  function closeModal() {
+    setIsModalOpen(false);
+  }
+
   return (
     <ProfileFaciaContainer>
-      {isLoggedIn ? (
+      {!isLoggedIn ? (
         <>
           <Avatar sx={{ width: 40, height: 40 }}>U</Avatar>
           <Greeting>
@@ -18,10 +33,17 @@ export function ProfileFacia() {
         </>
       ) : (
         <>
-          <Button variant="outlined" color="secondary">
+          <Popup open={isModalOpen} closeOnDocumentClick onClose={closeModal}>
+            {modalMode === "login" ? (
+              <LoginModalWindow close={closeModal} />
+            ) : (
+              <RegistrationModalWindow close={closeModal} />
+            )}
+          </Popup>
+          <Button variant="outlined" color="secondary" onClick={() => openModal("login")}>
             Log in
           </Button>
-          <Button variant="contained" color="secondary">
+          <Button variant="contained" color="secondary" onClick={() => openModal("register")}>
             Register
           </Button>
         </>
