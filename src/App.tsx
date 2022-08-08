@@ -14,6 +14,7 @@ import SingleApartmentPage from "app/pages/singleApartmentPage";
 import { NavigationMenu } from "app/layouts/header/navigationMenu";
 import { fetchUserData } from "app/redux/userSlice";
 import { selectErrorState } from "app/redux/errorSlice";
+import InProgressPage from "app/pages/inProgressPage";
 
 export const ColorModeToggleContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -59,6 +60,11 @@ function App() {
                     path={`${NavigationLinks.APARTMENTS}/:id`}
                     element={<SingleApartmentPage />}
                   />
+                  <Route path={NavigationLinks.JOBS} element={<InProgressPage />} />
+                  <Route path={NavigationLinks.OFFERS} element={<InProgressPage />} />
+                  <Route path={NavigationLinks.SERVICES} element={<InProgressPage />} />
+                  <Route path={NavigationLinks.TERMS} element={<InProgressPage />} />
+                  <Route path={NavigationLinks.UPDATES} element={<InProgressPage />} />
                 </Routes>
               </BrowserRouter>
             ) : (
