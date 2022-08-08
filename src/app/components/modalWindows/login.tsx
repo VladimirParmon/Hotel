@@ -53,6 +53,9 @@ export function LoginModalWindow({ close }: LoginModalWindowProps) {
         <Button variant="contained" color="secondary" sx={{ marginTop: "10px" }} type="submit">
           Login in
         </Button>
+        <Button variant="outlined" color="secondary" onClick={() => close()}>
+          Close
+        </Button>
       </ModalForm>
     </ModalWindow>
   );
