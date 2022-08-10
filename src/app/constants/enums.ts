@@ -14,6 +14,8 @@ export enum NavigationLinks {
   JOBS = "/job-opportunities",
   UPDATES = "/updates",
   TERMS = "/terms-of-service",
+  SETTINGS = "/settings",
+  ADMIN_PANEL = "/admin-panel",
 }
 
 export enum GuestsTypes {

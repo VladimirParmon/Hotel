@@ -1,9 +1,11 @@
 import { Button, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { LoginModalWindow, RegistrationModalWindow } from "app/components/modalWindows";
+import { NavigationLinks } from "app/constants/enums";
 import { useAppSelector } from "app/redux/hooks";
 import { selectUserInfo } from "app/redux/userSlice";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import Popup from "reactjs-popup";
 import { Greeting, ProfileFaciaContainer } from "./components";
 
@@ -12,6 +14,8 @@ export function ProfileFacia() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState("login");
   const userData = useAppSelector(selectUserInfo).userData;
+  const navigate = useNavigate();
+  const goSettings = () => navigate(NavigationLinks.SETTINGS);
 
   function openModal(mode: "login" | "register") {
     setModalMode(mode);
@@ -23,7 +27,7 @@ export function ProfileFacia() {
   }
 
   return (
-    <ProfileFaciaContainer>
+    <ProfileFaciaContainer onClick={goSettings}>
       {isLoggedIn ? (
         <>
           <Avatar sx={{ width: 40, height: 40 }}>

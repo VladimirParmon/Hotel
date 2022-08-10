@@ -12,10 +12,12 @@ import { fetchApartmentsInfo, selectApartmentsInfo } from "app/redux/apartmentsS
 import Loader from "app/components/loader";
 import SingleApartmentPage from "app/pages/singleApartmentPage";
 import { NavigationMenu } from "app/layouts/header/navigationMenu";
-import { fetchUserData } from "app/redux/userSlice";
+import { fetchUserData, selectUserInfo } from "app/redux/userSlice";
 import { selectErrorState } from "app/redux/errorSlice";
 import InProgressPage from "app/pages/inProgressPage";
 import Page404 from "app/pages/page404";
+import SettingsPage from "app/pages/settingsPage";
+import AdminPanel from "app/components/adminPanel";
 
 export const ColorModeToggleContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -33,6 +35,7 @@ function App() {
     []
   );
   const theme = React.useMemo(() => createTheme(getDesignTokens(themeMode)), [themeMode]);
+  const adminStatus = useAppSelector(selectUserInfo).userData?.userAdminStatus;
 
   useEffect(() => {
     dispatch(fetchApartmentsInfo());
@@ -65,6 +68,13 @@ function App() {
                     path={`${NavigationLinks.APARTMENTS}/:id`}
                     element={<SingleApartmentPage />}
                   />
+                  <Route path={NavigationLinks.SETTINGS} element={<SettingsPage />} />
+                  {adminStatus && (
+                    <Route
+                      path={NavigationLinks.SETTINGS + NavigationLinks.ADMIN_PANEL}
+                      element={<AdminPanel />}
+                    />
+                  )}
                   <Route path={NavigationLinks.JOBS} element={<InProgressPage />} />
                   <Route path={NavigationLinks.OFFERS} element={<InProgressPage />} />
                   <Route path={NavigationLinks.SERVICES} element={<InProgressPage />} />
