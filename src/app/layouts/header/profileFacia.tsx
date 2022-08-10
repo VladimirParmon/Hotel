@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { LoginModalWindow, RegistrationModalWindow } from "app/components/modalWindows";
 import { useAppSelector } from "app/redux/hooks";
@@ -11,6 +11,7 @@ export function ProfileFacia() {
   const isLoggedIn: boolean = useAppSelector(selectUserInfo).isLoggedIn;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState("login");
+  const userData = useAppSelector(selectUserInfo).userData;
 
   function openModal(mode: "login" | "register") {
     setModalMode(mode);
@@ -23,12 +24,17 @@ export function ProfileFacia() {
 
   return (
     <ProfileFaciaContainer>
-      {!isLoggedIn ? (
+      {isLoggedIn ? (
         <>
-          <Avatar sx={{ width: 40, height: 40 }}>U</Avatar>
+          <Avatar sx={{ width: 40, height: 40 }}>
+            {userData?.userFirstName[0]}
+            {userData?.userLastName[0]}
+          </Avatar>
           <Greeting>
-            <span style={{ fontSize: "0.9rem" }}>Добро пожаловать!</span>
-            <span>Username here</span>
+            <Typography style={{ fontSize: "0.7rem" }}>Welcome! You logged in as:</Typography>
+            <span>
+              {userData?.userFirstName} {userData?.userLastName}
+            </span>
           </Greeting>
         </>
       ) : (

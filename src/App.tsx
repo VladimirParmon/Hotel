@@ -36,7 +36,11 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchApartmentsInfo());
-    if (localStorage.getItem("userId")) dispatch(fetchUserData());
+    const userId = localStorage.getItem("userId");
+    const accessToken = localStorage.getItem("accessToken");
+    if (userId && accessToken) {
+      dispatch(fetchUserData(userId, accessToken));
+    }
   }, [dispatch]);
 
   const fetchingError = useAppSelector(selectErrorState);

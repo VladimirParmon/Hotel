@@ -1,7 +1,10 @@
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import Loader from "../loader";
 import { ModalForm, ModalWindow } from "./components";
+import { useAppDispatch, useAppSelector } from "app/redux/hooks";
+import { logUserIn, selectUserInfo } from "app/redux/userSlice";
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Email is invalid").required("Please enter your email"),
@@ -15,6 +18,9 @@ interface LoginModalWindowProps {
 }
 
 export function LoginModalWindow({ close }: LoginModalWindowProps) {
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector(selectUserInfo).isLoading;
+  const error = useAppSelector(selectUserInfo).error;
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -22,7 +28,7 @@ export function LoginModalWindow({ close }: LoginModalWindowProps) {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      //TODO: login submission
+      dispatch(logUserIn(values.email, values.password));
     },
   });
 
@@ -50,9 +56,14 @@ export function LoginModalWindow({ close }: LoginModalWindowProps) {
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
         />
-        <Button variant="contained" color="secondary" sx={{ marginTop: "10px" }} type="submit">
-          Login in
-        </Button>
+        {error && <Typography>{error}</Typography>}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <Button variant="contained" color="secondary" sx={{ marginTop: "10px" }} type="submit">
+            Login in
+          </Button>
+        )}
         <Button variant="outlined" color="secondary" onClick={() => close()}>
           Close
         </Button>

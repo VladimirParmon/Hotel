@@ -74,10 +74,11 @@ export interface ApartmentsState {
 export interface UserState {
   userData: UserData | null;
   isLoggedIn: boolean;
+  isLoading: boolean;
+  error: string | null;
 }
 
 export interface UserData {
-  accessToken: string;
   userId: string;
   userFirstName: string;
   userLastName: string;
@@ -85,6 +86,11 @@ export interface UserData {
   userDateOfBirth: Date | string;
   userGender: "male" | "female";
   userAdminStatus: boolean;
+}
+
+export interface LoginResponse {
+  userId: string;
+  accessToken: string;
 }
 
 export interface ErrorState {
