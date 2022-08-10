@@ -5,7 +5,7 @@ import MaleIcon from "@mui/icons-material/Male";
 import FemaleIcon from "@mui/icons-material/Female";
 import { Container, ImagePlaceholder, Info, Line, SpanKey, SpanValue } from "./components";
 
-function getFormattedDate(userDateOfBirth: Date | string): string {
+function getFormattedDate(userDateOfBirth: number): string {
   const date = new Date(userDateOfBirth);
   const day = date.getDay().toString().padStart(2, "0");
   const month = date.getMonth().toString().padStart(2, "0");

@@ -14,7 +14,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 interface DatePickerProps {
   value: Date | null;
   name: string;
-  setFieldValue: (name: string, value: Date | null) => void;
+  setFieldValue: (name: string, value: number) => void;
   touched: boolean | undefined;
   error: string | undefined;
 }
@@ -29,6 +29,10 @@ export const DatePickerFormik = ({
   const myMaxDate = new Date("01-01-2005");
   const myMinDate = new Date("01-01-1930");
   const theme = useTheme();
+
+  function handleChange(value: Date | null) {
+    if (value) setFieldValue(name, value.getTime());
+  }
   return (
     <div onClick={(e) => e.stopPropagation()}>
       <Accordion>
@@ -45,7 +49,7 @@ export const DatePickerFormik = ({
               maxDate={myMaxDate}
               minDate={myMinDate}
               onChange={(newValue) => {
-                setFieldValue(name, newValue);
+                handleChange(newValue);
               }}
               renderInput={(params) => <TextField {...params} />}
             />

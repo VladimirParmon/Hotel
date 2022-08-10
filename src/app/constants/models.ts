@@ -83,9 +83,19 @@ export interface UserData {
   userFirstName: string;
   userLastName: string;
   userEmail: string;
-  userDateOfBirth: Date | string;
+  userDateOfBirth: number;
   userGender: "male" | "female";
   userAdminStatus: boolean;
+}
+
+export interface Booking {
+  bookingId: string;
+  customerId: string;
+  bookingDate: number;
+  occupationDate: FiltersRange;
+  apartment: number;
+  guests: Guests;
+  totalPrice: number;
 }
 
 export interface LoginResponse {
