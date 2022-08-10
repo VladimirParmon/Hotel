@@ -15,7 +15,7 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    updateUserData: (state, action: PayloadAction<UserData>) => {
+    updateUserData: (state, action: PayloadAction<UserData | null>) => {
       state.userData = action.payload;
     },
     updateIsUserLoggedIn: (state, action: PayloadAction<boolean>) => {
@@ -59,5 +59,11 @@ export const fetchUserData =
       })
       .catch(() => dispatch(updateErrorState(true)));
   };
+
+export const logOut = (): AppThunk => (dispatch, getState) => {
+  dispatch(updateUserData(null));
+  dispatch(updateIsUserLoggedIn(false));
+  localStorage.clear();
+};
 
 export default userSlice.reducer;
