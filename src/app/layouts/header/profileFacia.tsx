@@ -43,13 +43,6 @@ export function ProfileFacia() {
         </>
       ) : (
         <>
-          <Popup open={isModalOpen} closeOnDocumentClick onClose={closeModal}>
-            {modalMode === "login" ? (
-              <LoginModalWindow close={closeModal} />
-            ) : (
-              <RegistrationModalWindow close={closeModal} />
-            )}
-          </Popup>
           <Button variant="outlined" color="secondary" onClick={() => openModal("login")}>
             Log in
           </Button>
@@ -58,6 +51,13 @@ export function ProfileFacia() {
           </Button>
         </>
       )}
+      <Popup open={isModalOpen && !isLoggedIn} closeOnDocumentClick onClose={closeModal}>
+        {modalMode === "login" ? (
+          <LoginModalWindow close={closeModal} />
+        ) : (
+          <RegistrationModalWindow close={closeModal} />
+        )}
+      </Popup>
     </ProfileFaciaContainer>
   );
 }
