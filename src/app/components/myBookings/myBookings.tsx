@@ -2,6 +2,7 @@ import { Button, Typography } from "@mui/material";
 import { selectApartmentsInfo } from "app/redux/apartmentsSlice";
 import { getBookings, selectBookingsState } from "app/redux/bookingsSlice";
 import { useAppDispatch, useAppSelector } from "app/redux/hooks";
+import { selectUserInfo } from "app/redux/userSlice";
 
 import { useEffect } from "react";
 import Card from "../card";
@@ -18,6 +19,9 @@ export function MyBookings() {
   useEffect(() => {
     dispatch(getBookings());
   }, [dispatch]);
+
+  const userData = useAppSelector(selectUserInfo).userData;
+  if (!userData) return <Typography variant="h5">Please login in to see the data</Typography>;
 
   return (
     <>
