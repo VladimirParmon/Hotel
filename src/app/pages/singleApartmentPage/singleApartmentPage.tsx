@@ -1,4 +1,3 @@
-import { Paper } from "@mui/material";
 import ApartmentDescription from "app/components/apartmentDescription";
 import BookingWindow from "app/components/bookingWindow";
 import SliderComponent from "app/components/slider";

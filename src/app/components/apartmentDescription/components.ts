@@ -16,6 +16,7 @@ export const Feed = styled("div")(
   ({ theme }) => `
 display: flex;
 flex-direction: column;
+gap: 30px;
 width: 100%;
 max-width: 1450px;
 ${theme.breakpoints.up("fullscreen")} {
@@ -80,4 +81,21 @@ export const DescriptionSpan = styled(Typography)`
 export const SectionHeading = styled(Typography)`
   text-align: center;
   margin-bottom: 20px;
+`;
+
+export const NoticeContainer = styled("div")`
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+export const Notice = styled("div")`
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  max-width: 450px;
 `;
