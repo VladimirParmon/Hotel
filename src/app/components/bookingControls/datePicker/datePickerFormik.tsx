@@ -14,7 +14,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 interface DatePickerProps {
   value: Date | null;
   name: string;
-  setFieldValue: (name: string, value: number) => void;
+  setFieldValue: (name: string, value: Date | null) => void;
   touched: boolean | undefined;
   error: string | undefined;
 }
@@ -31,7 +31,7 @@ export const DatePickerFormik = ({
   const theme = useTheme();
 
   function handleChange(value: Date | null) {
-    if (value) setFieldValue(name, value.getTime());
+    if (value) setFieldValue(name, value);
   }
   return (
     <div onClick={(e) => e.stopPropagation()}>
