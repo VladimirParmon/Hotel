@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
+import EditProfile from "app/components/editProfile";
 import MyBookings from "app/components/myBookings";
 import PersonalInfo from "app/components/personalInfo";
 import React, { useState } from "react";
@@ -51,7 +52,7 @@ export function SettingsPage() {
         <MyBookings />
       </TabPanel>
       <TabPanel value={tabsValue} index={2}>
-        Item Three
+        <EditProfile />
       </TabPanel>
     </PageContainer>
   );
