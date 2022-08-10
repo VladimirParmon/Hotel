@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
+import MyBookings from "app/components/myBookings";
 import PersonalInfo from "app/components/personalInfo";
 import React, { useState } from "react";
 import { PageContainer } from "./components";
@@ -39,15 +40,15 @@ export function SettingsPage() {
         indicatorColor="secondary"
         textColor="secondary"
       >
-        <Tab label="Profile" />
-        <Tab label="Bookings" />
+        <Tab label="My profile" />
+        <Tab label="My bookings" />
         <Tab label="Edit profile" />
       </Tabs>
       <TabPanel value={tabsValue} index={0}>
         <PersonalInfo />
       </TabPanel>
       <TabPanel value={tabsValue} index={1}>
-        Item Two
+        <MyBookings />
       </TabPanel>
       <TabPanel value={tabsValue} index={2}>
         Item Three

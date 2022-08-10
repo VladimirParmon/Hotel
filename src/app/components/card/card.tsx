@@ -5,17 +5,19 @@ import { useNavigate } from "react-router";
 import NumberAndFloorHeading from "../numberAndFloorHeading";
 import { SliderComponent } from "../slider/slider";
 import Stars from "../stars";
-import { CardContainer, CardInner, CardReviews } from "./components";
+import { CardContainer, CardContainerNonAdaptive, CardInner, CardReviews } from "./components";
 
 interface CardProps {
   apartment: IApartment;
+  noSizeChange?: boolean;
 }
 
-export function Card({ apartment }: CardProps) {
+export function Card({ apartment, noSizeChange }: CardProps) {
   const navigate = useNavigate();
   const navigateToApartment = () => navigate(`${NavigationLinks.APARTMENTS}/${apartment.id}`);
+  const Container = noSizeChange ? CardContainerNonAdaptive : CardContainer;
   return (
-    <CardContainer elevation={5} onClick={navigateToApartment} color="primary">
+    <Container elevation={5} onClick={navigateToApartment} color="primary">
       <SliderComponent items={apartment.photos} />
       <CardInner>
         <NumberAndFloorHeading apartment={apartment} />
@@ -26,6 +28,6 @@ export function Card({ apartment }: CardProps) {
           <Typography>{apartment.reviews.length} review(s)</Typography>
         </CardReviews>
       </CardInner>
-    </CardContainer>
+    </Container>
   );
 }

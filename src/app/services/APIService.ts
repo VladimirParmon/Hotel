@@ -26,13 +26,29 @@ const mockBookings: Booking[] = [
       from: 1658434660000,
       to: 1658521060000,
     },
-    apartment: 3,
+    apartmentId: "1234",
     guests: {
       adults: 1,
       infants: 0,
       children: 0,
     },
     totalPrice: 13000,
+  },
+  {
+    bookingId: "dsa2qdsai3e2u923u4",
+    customerId: "djijawndkjn2qud0sjdi",
+    bookingDate: 1658318260000,
+    occupationDate: {
+      from: 1658414660000,
+      to: 1658521060000,
+    },
+    apartmentId: "48611",
+    guests: {
+      adults: 1,
+      infants: 0,
+      children: 0,
+    },
+    totalPrice: 1452,
   },
 ];
 
@@ -53,5 +69,5 @@ export async function loginIn(login: string, password: string) {
 }
 
 export async function getBookings() {
-  return new Promise<Booking[]>((resolve) => setTimeout(() => resolve(mockBookings), 1500));
+  return new Promise<Booking[]>((resolve) => setTimeout(() => resolve(mockBookings), 15));
 }

@@ -24,6 +24,19 @@ ${theme.breakpoints.down("smallScreen")} {
 `
 );
 
+export const CardContainerNonAdaptive = styled(Paper)(
+  ({ theme }) => `
+width: 330px;
+height: auto;
+cursor: pointer;
+box-sizing: border-box !important;
+
+&:hover {
+  border-bottom: 2px solid ${theme.palette.secondary.main};
+}
+`
+);
+
 export const CardInner = styled("div")`
   padding: 5px 15px 15px 15px;
 `;

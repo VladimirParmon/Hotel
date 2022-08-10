@@ -91,11 +91,16 @@ export interface UserData {
 export interface Booking {
   bookingId: string;
   customerId: string;
+  apartmentId: string;
   bookingDate: number;
   occupationDate: FiltersRange;
-  apartment: number;
   guests: Guests;
   totalPrice: number;
+}
+
+export interface BookingsState {
+  bookings: Booking[];
+  isLoading: boolean;
 }
 
 export interface LoginResponse {

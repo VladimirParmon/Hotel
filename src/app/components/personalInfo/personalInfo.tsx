@@ -4,16 +4,7 @@ import { logOut, selectUserInfo } from "app/redux/userSlice";
 import MaleIcon from "@mui/icons-material/Male";
 import FemaleIcon from "@mui/icons-material/Female";
 import { Container, ImagePlaceholder, Info, Line, SpanKey, SpanValue } from "./components";
-
-function getFormattedDate(userDateOfBirth: number): string {
-  const date = new Date(userDateOfBirth);
-  const day = date.getDate().toString().padStart(2, "0");
-  const indexedMonth = date.getMonth() + 1;
-  const month = indexedMonth.toString().padStart(2, "0");
-  const year = date.getFullYear();
-  const y = `${day}/${month}/${year}`;
-  return y;
-}
+import { getFormattedDate } from "app/services/getFormattedDate";
 
 export function PersonalInfo() {
   const dispatch = useAppDispatch();
