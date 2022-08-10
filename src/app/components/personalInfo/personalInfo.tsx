@@ -1,18 +1,27 @@
-import { Typography } from "@mui/material";
-import { useAppSelector } from "app/redux/hooks";
-import { selectUserInfo } from "app/redux/userSlice";
+import { Button, Typography } from "@mui/material";
+import { useAppDispatch, useAppSelector } from "app/redux/hooks";
+import { logOut, selectUserInfo } from "app/redux/userSlice";
 import MaleIcon from "@mui/icons-material/Male";
 import FemaleIcon from "@mui/icons-material/Female";
 import { Container, ImagePlaceholder, Info, Line, SpanKey, SpanValue } from "./components";
 
-export function PersonalInfo() {
-  const userData = useAppSelector(selectUserInfo).userData;
-  if (!userData) return <Typography variant="h5">Please login in to see the data</Typography>;
-  const date = new Date(userData.userDateOfBirth);
+function getFormattedDate(userDateOfBirth: Date | string): string {
+  const date = new Date(userDateOfBirth);
   const day = date.getDay().toString().padStart(2, "0");
   const month = date.getMonth().toString().padStart(2, "0");
   const year = date.getFullYear();
   const y = `${day}/${month}/${year}`;
+  return y;
+}
+
+export function PersonalInfo() {
+  const dispatch = useAppDispatch();
+  const userData = useAppSelector(selectUserInfo).userData;
+  if (!userData) return <Typography variant="h5">Please login in to see the data</Typography>;
+  const date = getFormattedDate(userData.userDateOfBirth);
+  function logOutHandler() {
+    dispatch(logOut());
+  }
   return (
     <Container>
       <ImagePlaceholder>
@@ -33,7 +42,7 @@ export function PersonalInfo() {
         </Line>
         <Line>
           <SpanKey>Date of birth:</SpanKey>
-          <SpanValue>{y}</SpanValue>
+          <SpanValue>{date}</SpanValue>
         </Line>
         <Line>
           <SpanKey>Email:</SpanKey>
@@ -45,6 +54,9 @@ export function PersonalInfo() {
             <SpanValue>admin</SpanValue>
           </Line>
         )}
+        <Button onClick={logOutHandler} variant="outlined" color="secondary">
+          Log out
+        </Button>
       </Info>
     </Container>
   );
