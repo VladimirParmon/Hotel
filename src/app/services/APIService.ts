@@ -7,7 +7,7 @@ const mockUser: UserData = {
   userFirstName: "Vladimir",
   userLastName: "Parmon",
   userEmail: "parmon_vladimir@bk.ru",
-  userDateOfBirth: 1658348260000,
+  userDateOfBirth: 899324260000,
   userGender: "male",
   userAdminStatus: true,
 };
