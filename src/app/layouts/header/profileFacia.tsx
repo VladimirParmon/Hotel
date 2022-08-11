@@ -15,7 +15,9 @@ export function ProfileFacia() {
   const [modalMode, setModalMode] = useState("login");
   const userData = useAppSelector(selectUserInfo).userData;
   const navigate = useNavigate();
-  const goSettings = () => navigate(NavigationLinks.SETTINGS);
+  const goSettings = () => {
+    if (isLoggedIn) navigate(NavigationLinks.SETTINGS);
+  };
 
   function openModal(mode: "login" | "register") {
     setModalMode(mode);
