@@ -12,6 +12,19 @@ export const Window = styled("div")`
   padding: 10px;
 `;
 
+export const WindowWithBackground = styled("div")`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1200;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const Form = styled("form")(
   ({ theme }) => `
   display: flex;
@@ -22,7 +35,7 @@ export const Form = styled("form")(
   min-width: 300px;
   background-color: ${theme.palette.background.paper};
   padding: 20px;
-  max-height: 650px;
+  max-height: 750px;
   overflow-y: auto;
 `
 );

@@ -12,7 +12,7 @@ import { StaticDatePicker } from "@mui/x-date-pickers";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 interface DatePickerProps {
-  value: Date | null;
+  value: Date | null | number | undefined;
   name: string;
   setFieldValue: (name: string, value: Date | null) => void;
   touched: boolean | undefined;

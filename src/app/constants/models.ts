@@ -126,3 +126,13 @@ export interface ChoicesDescription {
   }[];
   filters?: IFilters;
 }
+
+export interface EditFormValues {
+  firstName: string;
+  lastName: string;
+  gender: "male" | "female";
+  dateOfBirth: Date | null | number | undefined;
+  email: string;
+  newPassword: string;
+  confirmNewPassword: string;
+}
