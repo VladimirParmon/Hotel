@@ -23,8 +23,8 @@ const mockBookings: Booking[] = [
     customerId: "djijawndkjn2qud0sjdi",
     bookingDate: 1658348260000,
     occupationDate: {
-      from: 1658434660000,
-      to: 1658521060000,
+      from: 1660335460000, //12.08 - 13.08
+      to: 1660421860000,
     },
     apartmentId: "1234",
     guests: {
@@ -39,8 +39,8 @@ const mockBookings: Booking[] = [
     customerId: "djijawndkjn2qud0sjdi",
     bookingDate: 1658318260000,
     occupationDate: {
-      from: 1658414660000,
-      to: 1658521060000,
+      from: 1661285860000, //23.08 - 24.08
+      to: 1661372260000,
     },
     apartmentId: "48611",
     guests: {

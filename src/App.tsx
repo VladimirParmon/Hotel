@@ -18,6 +18,7 @@ import InProgressPage from "app/pages/inProgressPage";
 import Page404 from "app/pages/page404";
 import SettingsPage from "app/pages/settingsPage";
 import AdminPanel from "app/components/adminPanel";
+import { fetchBookings } from "app/redux/bookingsSlice";
 
 export const ColorModeToggleContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -39,6 +40,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchApartmentsInfo());
+    dispatch(fetchBookings());
     const userId = localStorage.getItem("userId");
     const accessToken = localStorage.getItem("accessToken");
     if (userId && accessToken) {

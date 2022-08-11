@@ -1,24 +1,18 @@
 import { Button, Typography } from "@mui/material";
 import { selectApartmentsInfo } from "app/redux/apartmentsSlice";
-import { getBookings, selectBookingsState } from "app/redux/bookingsSlice";
-import { useAppDispatch, useAppSelector } from "app/redux/hooks";
+import { selectBookingsState } from "app/redux/bookingsSlice";
+import { useAppSelector } from "app/redux/hooks";
 import { selectUserInfo } from "app/redux/userSlice";
 
-import { useEffect } from "react";
 import Card from "../card";
 import Loader from "../loader";
 import { Booking, BookingInfo, Bookings } from "./components";
 import { TableComponent } from "./table";
 
 export function MyBookings() {
-  const dispatch = useAppDispatch();
   const bookings = useAppSelector(selectBookingsState).bookings;
   const isLoading = useAppSelector(selectBookingsState).isLoading;
   const apartments = useAppSelector(selectApartmentsInfo);
-
-  useEffect(() => {
-    dispatch(getBookings());
-  }, [dispatch]);
 
   const userData = useAppSelector(selectUserInfo).userData;
   if (!userData) return <Typography variant="h5">Please login in to see the data</Typography>;

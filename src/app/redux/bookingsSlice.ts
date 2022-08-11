@@ -26,7 +26,7 @@ export const { updateAllBookings, setIsLoading } = bookingsSlice.actions;
 
 export const selectBookingsState = (state: RootState) => state.bookings;
 
-export const getBookings = (): AppThunk => (dispatch, getState) => {
+export const fetchBookings = (): AppThunk => (dispatch, getState) => {
   dispatch(setIsLoading(true));
   APIService.getBookings()
     .then((data) => {
