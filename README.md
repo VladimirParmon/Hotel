@@ -28,3 +28,6 @@ Work in progress! App is finished ~80%;
 Features to implement:
 - Admin functions
 - Language change using i18n
+
+## Project does not have a back end!
+It's purpose is only to display my skills building react projects. However, you can still [have a look](https://vladimirparmon.github.io/Hotel/index.html)
