@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkhotel_project=self.webpackChunkhotel_project||[]).push([[617],{8617:function(e,t,c){e.exports=c.p+"static/media/room-coffee.28683127af1d947abb7c.jpg"}}]);
