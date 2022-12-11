@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./app/layouts/header";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import WelcomePage from "./app/pages/welcomePage";
 import { PaletteMode } from "./app/constants/models";
 import { createTheme, CssBaseline, ThemeProvider, Typography } from "@mui/material";
@@ -60,7 +60,7 @@ function App() {
           <ThemeProvider theme={theme}>
             <CssBaseline />
             {isDataLoaded ? (
-              <BrowserRouter>
+              <HashRouter>
                 <Header />
                 <NavigationMenu inHeader={false} />
                 <Routes>
@@ -84,7 +84,7 @@ function App() {
                   <Route path={NavigationLinks.UPDATES} element={<InProgressPage />} />
                   <Route path="*" element={<Page404 />} />
                 </Routes>
-              </BrowserRouter>
+              </HashRouter>
             ) : (
               <Loader isMain />
             )}
